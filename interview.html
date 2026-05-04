@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Preparation - OrganoChem</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-multi-page="true" id="top">
+<div class="progress-bar" id="progress"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="overlay-backdrop" id="backdrop" onclick="closeDetail()"></div>
+<div class="detail-overlay" id="detailPanel">
+  <div onclick="closeDetail()" class="detail-close">âœ•</div>
+  <div id="detailContent"></div>
+</div>
+<nav>
+  <div class="nav-logo"><a href="index.html" style="text-decoration:none;color:inherit">OrganoChem</a></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Index</a></li>
+    <li><a href="pdf-notes.html">PDF Notes</a></li>
+    <li class="parts-menu">
+      <button class="parts-button" type="button">Parts</button>
+      <div class="parts-dropdown">
+        <a href="parts/part-01-goc.html"><span>01</span>General Organic Chemistry</a>
+        <a href="parts/part-02-stereochemistry.html"><span>02</span>Stereochemistry</a>
+        <a href="parts/part-03-functional-groups.html"><span>03</span>Functional Group Chemistry</a>
+        <a href="parts/part-04-redox.html"><span>04</span>Oxidation & Reduction</a>
+        <a href="parts/part-05-rearrangements.html"><span>05</span>Rearrangement Reactions</a>
+        <a href="parts/part-06-couplings.html"><span>06</span>Coupling Reactions</a>
+        <a href="parts/part-07-named-reactions.html"><span>07</span>Named Reactions</a>
+        <a href="parts/part-08-analytical.html"><span>08</span>Analytical & Practical Organic</a>
+        <a href="parts/part-09-pharma-industrial.html"><span>09</span>Industrial & Pharma Organic Chemistry</a>
+        <a href="parts/part-10-advanced.html"><span>10</span>Advanced Concepts</a>
+        <a href="interview.html"><span>IV</span>Interview Preparation</a>
+        <a href="structure-editor.html"><span>SE</span>Online Structure Editor</a>
+      </div>
+    </li>
+    <li><a href="interview.html">Interview</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Toggle dark / light mode"></button>
+    <div class="nav-indicator"></div>
+  </div>
+</nav>
+<aside class="floating-toc" aria-label="Chapter navigation">
+  <a href="parts/part-01-goc.html" title="GOC">01</a>
+  <a href="parts/part-02-stereochemistry.html" title="Stereochemistry">02</a>
+  <a href="parts/part-03-functional-groups.html" title="Functional Groups">03</a>
+  <a href="parts/part-04-redox.html" title="Oxidation & Reduction">04</a>
+  <a href="parts/part-05-rearrangements.html" title="Rearrangements">05</a>
+  <a href="parts/part-06-couplings.html" title="Couplings">06</a>
+  <a href="parts/part-07-named-reactions.html" title="Named Reactions">07</a>
+  <a href="parts/part-08-analytical.html" title="Analytical">08</a>
+  <a href="parts/part-09-pharma-industrial.html" title="Pharma">09</a>
+  <a href="parts/part-10-advanced.html" title="Advanced">10</a>
+  <a href="interview.html" title="Interview Prep">IV</a>
+</aside>
+<a class="top-button" href="#top" title="Back to top">â†‘</a>
+<main>
+<section id="interview-prep" class="atlas-page active">
+  <div class="chapter-divider">
+    <div class="chapter-num">IV</div>
+    <div class="chapter-info"><div class="chapter-label">Interview Mode</div><div class="chapter-title">Interview Preparation</div></div>
+    <div class="chapter-line"></div>
+  </div>
+  <div class="content-area">
+    <div class="section-badge">100 High-Yield Q&A</div>
+    <h2 class="glow-header">Organic + Pharma R&D Interview Prep</h2>
+    <p class="glow-sub">Fast interview revision set covering basic organic concepts, reagents, process chemistry, analytical methods, and advanced pharma-tricky questions.</p>
+    <div class="page-actions"><a class="page-pill" href="index.html">Back to Master Index</a><a class="page-pill" href="parts/part-01-goc.html">Revise GOC</a><a class="page-pill" href="parts/part-09-pharma-industrial.html">Pharma Topics</a></div>
+    <div class="qa-section">
+      <h3 class="sub">SECTION 1: Basic Organic &amp; Reaction Concepts</h3>
+      <div class="qa-grid"><div class="qa-card"><div class="qa-q">1. What is nucleophile?</div><div class="qa-a">Electron-rich species jo electron donate karta hai.</div></div><div class="qa-card"><div class="qa-q">2. Electrophile kya hota hai?</div><div class="qa-a">Electron-deficient species jo electron accept karta hai.</div></div><div class="qa-card"><div class="qa-q">3. SN1 vs SN2 difference?</div><div class="qa-a">SN1: 2-step, carbocation<br>SN2: 1-step, backside attack</div></div><div class="qa-card"><div class="qa-q">4. E1 vs E2?</div><div class="qa-a">E1: carbocation<br>E2: concerted elimination</div></div><div class="qa-card"><div class="qa-q">5. Leaving group kya hota hai?</div><div class="qa-a">Jo stable form me molecule se nikal jata hai, e.g., Cl⁻, Br⁻.</div></div><div class="qa-card"><div class="qa-q">6. Carbocation stability order?</div><div class="qa-a">3° > 2° > 1° > methyl.</div></div><div class="qa-card"><div class="qa-q">7. Inductive effect kya hai?</div><div class="qa-a">Electron withdrawing/donating via sigma bond.</div></div><div class="qa-card"><div class="qa-q">8. Resonance effect?</div><div class="qa-a">Electron delocalization via π system.</div></div><div class="qa-card"><div class="qa-q">9. Hyperconjugation kya hai?</div><div class="qa-a">Sigma bond interaction with adjacent p-orbital.</div></div><div class="qa-card"><div class="qa-q">10. Aromaticity condition?</div><div class="qa-a">Huckel rule: 4n+2 π electrons.</div></div><div class="qa-card"><div class="qa-q">11. Tautomerism kya hai?</div><div class="qa-a">Keto-enol interconversion.</div></div><div class="qa-card"><div class="qa-q">12. pKa importance?</div><div class="qa-a">Acid strength measure.</div></div><div class="qa-card"><div class="qa-q">13. Polar protic vs aprotic solvent?</div><div class="qa-a">Protic: H-bond donor<br>Aprotic: no H donation</div></div><div class="qa-card"><div class="qa-q">14. Why SN2 faster in aprotic?</div><div class="qa-a">Nucleophile strong rehta hai.</div></div><div class="qa-card"><div class="qa-q">15. Steric hindrance kya hota hai?</div><div class="qa-a">Bulky groups reaction slow karte hain.</div></div><div class="qa-card"><div class="qa-q">16. Regioselectivity vs stereoselectivity?</div><div class="qa-a">Position selectivity vs 3D selectivity.</div></div><div class="qa-card"><div class="qa-q">17. Optical activity kya hai?</div><div class="qa-a">Plane polarized light rotate karna.</div></div><div class="qa-card"><div class="qa-q">18. Racemic mixture kya hai?</div><div class="qa-a">Equal enantiomers, no net rotation.</div></div><div class="qa-card"><div class="qa-q">19. Meso compound kya hota hai?</div><div class="qa-a">Chiral centers but achiral overall.</div></div><div class="qa-card"><div class="qa-q">20. Hammond postulate?</div><div class="qa-a">Transition state resembles nearest stable species.</div></div></div>
+    </div><div class="qa-section">
+      <h3 class="sub">SECTION 2: Reagents &amp; Functional Group Transformations</h3>
+      <div class="qa-grid"><div class="qa-card"><div class="qa-q">21. PCC use?</div><div class="qa-a">Alcohol → aldehyde.</div></div><div class="qa-card"><div class="qa-q">22. KMnO₄ role?</div><div class="qa-a">Strong oxidizing agent.</div></div><div class="qa-card"><div class="qa-q">23. LiAlH₄ vs NaBH₄?</div><div class="qa-a">LiAlH₄ stronger.</div></div><div class="qa-card"><div class="qa-q">24. Grignard reagent kya karta hai?</div><div class="qa-a">Carbon-carbon bond formation.</div></div><div class="qa-card"><div class="qa-q">25. DIBAL-H use?</div><div class="qa-a">Ester → aldehyde.</div></div><div class="qa-card"><div class="qa-q">26. Swern oxidation?</div><div class="qa-a">Alcohol → aldehyde/ketone under mild conditions.</div></div><div class="qa-card"><div class="qa-q">27. Hydrogenation catalyst?</div><div class="qa-a">Pd/C, Pt.</div></div><div class="qa-card"><div class="qa-q">28. Wittig reaction?</div><div class="qa-a">Carbonyl → alkene.</div></div><div class="qa-card"><div class="qa-q">29. Friedel-Crafts reaction?</div><div class="qa-a">Alkylation/acylation on aromatic ring.</div></div><div class="qa-card"><div class="qa-q">30. Diazotization?</div><div class="qa-a">Aromatic amine → diazonium salt.</div></div><div class="qa-card"><div class="qa-q">31. Sandmeyer reaction?</div><div class="qa-a">Diazonium → halide.</div></div><div class="qa-card"><div class="qa-q">32. Reduction of nitro group?</div><div class="qa-a">Sn/HCl, Fe/HCl.</div></div><div class="qa-card"><div class="qa-q">33. Oxime formation?</div><div class="qa-a">Carbonyl + NH₂OH.</div></div><div class="qa-card"><div class="qa-q">34. Amide formation?</div><div class="qa-a">Acid + amine.</div></div><div class="qa-card"><div class="qa-q">35. Ester hydrolysis?</div><div class="qa-a">Acid/base catalyzed.</div></div><div class="qa-card"><div class="qa-q">36. Protection group example?</div><div class="qa-a">TBDMS for alcohol.</div></div><div class="qa-card"><div class="qa-q">37. Deprotection?</div><div class="qa-a">Acidic/fluoride removal.</div></div><div class="qa-card"><div class="qa-q">38. Tosylation?</div><div class="qa-a">OH → good leaving group.</div></div><div class="qa-card"><div class="qa-q">39. Alkylation of amine issue?</div><div class="qa-a">Over-alkylation.</div></div><div class="qa-card"><div class="qa-q">40. Reductive amination?</div><div class="qa-a">Amine synthesis via carbonyl.</div></div></div>
+    </div><div class="qa-section">
+      <h3 class="sub">SECTION 3: Process Chemistry &amp; Scale-up</h3>
+      <div class="qa-grid"><div class="qa-card"><div class="qa-q">41. Process chemistry kya hai?</div><div class="qa-a">Lab reaction ko industrial scale pe optimize karna.</div></div><div class="qa-card"><div class="qa-q">42. Scale-up challenge?</div><div class="qa-a">Heat transfer, mixing.</div></div><div class="qa-card"><div class="qa-q">43. Exothermic reaction control kaise karte ho?</div><div class="qa-a">Cooling, slow addition.</div></div><div class="qa-card"><div class="qa-q">44. Yield vs purity tradeoff?</div><div class="qa-a">High yield ≠ high purity always.</div></div><div class="qa-card"><div class="qa-q">45. Impurity kya hai?</div><div class="qa-a">Unwanted chemical species.</div></div><div class="qa-card"><div class="qa-q">46. Types of impurities?</div><div class="qa-a">Process, degradation, residual solvent.</div></div><div class="qa-card"><div class="qa-q">47. Residual solvent guideline?</div><div class="qa-a">ICH Q3C.</div></div><div class="qa-card"><div class="qa-q">48. Class 1 solvents?</div><div class="qa-a">Toxic, e.g., benzene.</div></div><div class="qa-card"><div class="qa-q">49. Class 2 solvents?</div><div class="qa-a">Limited toxicity.</div></div><div class="qa-card"><div class="qa-q">50. Class 3 solvents?</div><div class="qa-a">Low toxic.</div></div><div class="qa-card"><div class="qa-q">51. Recrystallization purpose?</div><div class="qa-a">Purification.</div></div><div class="qa-card"><div class="qa-q">52. Polymorphism kya hai?</div><div class="qa-a">Same compound, different crystal form.</div></div><div class="qa-card"><div class="qa-q">53. Filtration types?</div><div class="qa-a">Vacuum, pressure.</div></div><div class="qa-card"><div class="qa-q">54. Drying methods?</div><div class="qa-a">Tray, vacuum.</div></div><div class="qa-card"><div class="qa-q">55. Solvent selection criteria?</div><div class="qa-a">Solubility, toxicity.</div></div><div class="qa-card"><div class="qa-q">56. Green chemistry kya hai?</div><div class="qa-a">Eco-friendly synthesis.</div></div><div class="qa-card"><div class="qa-q">57. Atom economy?</div><div class="qa-a">Useful atoms in product.</div></div><div class="qa-card"><div class="qa-q">58. Reaction mass efficiency?</div><div class="qa-a">Yield + waste factor.</div></div><div class="qa-card"><div class="qa-q">59. Work-up kya hota hai?</div><div class="qa-a">Reaction ke baad purification.</div></div><div class="qa-card"><div class="qa-q">60. Batch vs continuous?</div><div class="qa-a">Batch: traditional<br>Continuous: modern.</div></div></div>
+    </div><div class="qa-section">
+      <h3 class="sub">SECTION 4: Analytical &amp; Characterization</h3>
+      <div class="qa-grid"><div class="qa-card"><div class="qa-q">61. TLC purpose?</div><div class="qa-a">Reaction monitoring.</div></div><div class="qa-card"><div class="qa-q">62. Rf value kya hai?</div><div class="qa-a">Distance ratio.</div></div><div class="qa-card"><div class="qa-q">63. HPLC kya karta hai?</div><div class="qa-a">Separation + quantification.</div></div><div class="qa-card"><div class="qa-q">64. GC kab use hota hai?</div><div class="qa-a">Volatile compounds.</div></div><div class="qa-card"><div class="qa-q">65. NMR kya batata hai?</div><div class="qa-a">Structure.</div></div><div class="qa-card"><div class="qa-q">66. IR spectroscopy?</div><div class="qa-a">Functional group detection.</div></div><div class="qa-card"><div class="qa-q">67. Mass spectroscopy?</div><div class="qa-a">Molecular weight.</div></div><div class="qa-card"><div class="qa-q">68. UV spectroscopy?</div><div class="qa-a">Conjugation.</div></div><div class="qa-card"><div class="qa-q">69. LOD vs LOQ?</div><div class="qa-a">Detection vs quantification.</div></div><div class="qa-card"><div class="qa-q">70. Calibration curve kya hai?</div><div class="qa-a">Concentration vs response.</div></div><div class="qa-card"><div class="qa-q">71. System suitability kya hai?</div><div class="qa-a">Method performance check.</div></div><div class="qa-card"><div class="qa-q">72. Peak tailing kya hai?</div><div class="qa-a">Poor separation.</div></div><div class="qa-card"><div class="qa-q">73. Resolution kya hai?</div><div class="qa-a">Peak separation quality.</div></div><div class="qa-card"><div class="qa-q">74. Chromatogram kya hai?</div><div class="qa-a">Detector output graph.</div></div><div class="qa-card"><div class="qa-q">75. Internal standard kya hai?</div><div class="qa-a">Quantification aid.</div></div><div class="qa-card"><div class="qa-q">76. Accuracy vs precision?</div><div class="qa-a">True vs reproducible.</div></div><div class="qa-card"><div class="qa-q">77. Robustness kya hai?</div><div class="qa-a">Method stability.</div></div><div class="qa-card"><div class="qa-q">78. Validation parameters?</div><div class="qa-a">Accuracy, precision, linearity.</div></div><div class="qa-card"><div class="qa-q">79. Impurity profiling?</div><div class="qa-a">Identification + quantification.</div></div><div class="qa-card"><div class="qa-q">80. Stability testing?</div><div class="qa-a">Drug degradation study.</div></div></div>
+    </div><div class="qa-section">
+      <h3 class="sub">SECTION 5: Advanced &amp; Interview-Tricky</h3>
+      <div class="qa-grid"><div class="qa-card"><div class="qa-q">81. GTI kya hai?</div><div class="qa-a">Genotoxic impurity.</div></div><div class="qa-card"><div class="qa-q">82. Control strategy kya hoti hai?</div><div class="qa-a">Impurity limit control plan.</div></div><div class="qa-card"><div class="qa-q">83. Nitrosamine issue?</div><div class="qa-a">Carcinogenic impurities.</div></div><div class="qa-card"><div class="qa-q">84. QbD kya hai?</div><div class="qa-a">Quality by Design.</div></div><div class="qa-card"><div class="qa-q">85. CPP kya hai?</div><div class="qa-a">Critical Process Parameter.</div></div><div class="qa-card"><div class="qa-q">86. CQA kya hai?</div><div class="qa-a">Critical Quality Attribute.</div></div><div class="qa-card"><div class="qa-q">87. Risk assessment tools?</div><div class="qa-a">FMEA.</div></div><div class="qa-card"><div class="qa-q">88. Design of experiment (DoE)?</div><div class="qa-a">Optimization tool.</div></div><div class="qa-card"><div class="qa-q">89. Process validation?</div><div class="qa-a">Consistency proof.</div></div><div class="qa-card"><div class="qa-q">90. Cleaning validation?</div><div class="qa-a">Cross contamination control.</div></div><div class="qa-card"><div class="qa-q">91. Hold time study?</div><div class="qa-a">Stability during delay.</div></div><div class="qa-card"><div class="qa-q">92. Reaction kinetics?</div><div class="qa-a">Rate study.</div></div><div class="qa-card"><div class="qa-q">93. Phase transfer catalyst?</div><div class="qa-a">Transfer ions between phases.</div></div><div class="qa-card"><div class="qa-q">94. Chiral separation?</div><div class="qa-a">Enantiomer separation.</div></div><div class="qa-card"><div class="qa-q">95. Salt formation?</div><div class="qa-a">Improve solubility.</div></div><div class="qa-card"><div class="qa-q">96. API vs intermediate?</div><div class="qa-a">Final drug vs step compound.</div></div><div class="qa-card"><div class="qa-q">97. IND vs NDA?</div><div class="qa-a">Clinical trial vs approval.</div></div><div class="qa-card"><div class="qa-q">98. Bioavailability?</div><div class="qa-a">Drug absorption.</div></div><div class="qa-card"><div class="qa-q">99. First-pass metabolism?</div><div class="qa-a">Liver metabolism.</div></div><div class="qa-card"><div class="qa-q">100. Why pharma R&amp;D?</div><div class="qa-a">Innovation + impact on health.</div></div></div>
+    </div>
+    <div class="warn-box"><strong>Bonus interview hack:</strong> Har answer ke baad real example do. Reaction explain karte time mechanism + impurity angle bhi mention karo.</div>
+    <div class="info-box"><strong>Next level ideas:</strong> Top 50 mechanism-based questions, real interview asked questions, and mock interview practice can be added as separate pages.</div>
+  </div>
+</section>
+</main>
+<footer>
+  <p>OrganoChem — <span>The Complete Organic Chemistry by Subrat Biswas</span></p>
+  <p style="margin-top:0.5rem"><span>Subrat Biswas is a Research Scientist in the API Research and Development division at Sun Pharmaceutical Industries Ltd., with over four years of experience in synthetic organic chemistry and process development. His work focuses on API synthesis, impurity profiling, and scale-up of chemical processes, with a strong emphasis on regulatory compliance and efficient drug development.</p>
+</footer>
+<script src="assets/js/main.js?v=2"></script>
+</body>
+</html>
+
