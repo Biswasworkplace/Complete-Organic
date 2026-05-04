@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Part 06 - Coupling Reactions</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-multi-page="true" id="top">
+<div class="progress-bar" id="progress"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="overlay-backdrop" id="backdrop" onclick="closeDetail()"></div>
+<div class="detail-overlay" id="detailPanel">
+  <div onclick="closeDetail()" class="detail-close">âœ•</div>
+  <div id="detailContent"></div>
+</div>
+<nav>
+  <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit">OrganoChem</a></div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Index</a></li>
+    <li><a href="../pdf-notes.html">PDF Notes</a></li>
+    <li class="parts-menu">
+      <button class="parts-button" type="button">Parts</button>
+      <div class="parts-dropdown">
+        <a href="../parts/part-01-goc.html"><span>01</span>General Organic Chemistry</a>
+        <a href="../parts/part-02-stereochemistry.html"><span>02</span>Stereochemistry</a>
+        <a href="../parts/part-03-functional-groups.html"><span>03</span>Functional Group Chemistry</a>
+        <a href="../parts/part-04-redox.html"><span>04</span>Oxidation & Reduction</a>
+        <a href="../parts/part-05-rearrangements.html"><span>05</span>Rearrangement Reactions</a>
+        <a href="../parts/part-06-couplings.html"><span>06</span>Coupling Reactions</a>
+        <a href="../parts/part-07-named-reactions.html"><span>07</span>Named Reactions</a>
+        <a href="../parts/part-08-analytical.html"><span>08</span>Analytical & Practical Organic</a>
+        <a href="../parts/part-09-pharma-industrial.html"><span>09</span>Industrial & Pharma Organic Chemistry</a>
+        <a href="../parts/part-10-advanced.html"><span>10</span>Advanced Concepts</a>
+        <a href="../interview.html"><span>IV</span>Interview Preparation</a>
+        <a href="../structure-editor.html"><span>SE</span>Online Structure Editor</a>
+      </div>
+    </li>
+    <li><a href="../interview.html">Interview</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Toggle dark / light mode"></button>
+    <div class="nav-indicator"></div>
+  </div>
+</nav>
+<aside class="floating-toc" aria-label="Chapter navigation">
+  <a href="../parts/part-01-goc.html" title="GOC">01</a>
+  <a href="../parts/part-02-stereochemistry.html" title="Stereochemistry">02</a>
+  <a href="../parts/part-03-functional-groups.html" title="Functional Groups">03</a>
+  <a href="../parts/part-04-redox.html" title="Oxidation & Reduction">04</a>
+  <a href="../parts/part-05-rearrangements.html" title="Rearrangements">05</a>
+  <a href="../parts/part-06-couplings.html" title="Couplings">06</a>
+  <a href="../parts/part-07-named-reactions.html" title="Named Reactions">07</a>
+  <a href="../parts/part-08-analytical.html" title="Analytical">08</a>
+  <a href="../parts/part-09-pharma-industrial.html" title="Pharma">09</a>
+  <a href="../parts/part-10-advanced.html" title="Advanced">10</a>
+  <a href="../interview.html" title="Interview Prep">IV</a>
+</aside>
+<a class="top-button" href="#top" title="Back to top">â†‘</a>
+<main>
+<section id="couplings" class="atlas-page active">
+  <div class="chapter-divider">
+    <div class="chapter-num">06</div>
+    <div class="chapter-info"><div class="chapter-label">Part Six</div><div class="chapter-title">Coupling Reactions</div></div>
+    <div class="chapter-line"></div>
+  </div>
+  <div class="content-area">
+    <div class="section-badge">R&D Core</div>
+    <h2 class="glow-header">Modern Bond Construction</h2>
+    <p class="glow-sub">Couplings are route-design workhorses in medicinal chemistry: they connect fragments late, diversify SAR quickly, and enable aryl-aryl, aryl-alkenyl, aryl-alkynyl, C-N, and C-O bonds.</p>
+    <div class="page-actions"><a class="page-pill" href="../index.html">Back to Master Index</a><a class="page-pill" href="../parts/part-07-named-reactions.html">Next: Named Reactions</a></div>
+    <div class="syllabus-list">
+      <div class="syllabus-item"><strong>32. Cross-Coupling Reactions</strong><span>Pd/Ni-catalysed bond formation through oxidative addition, transmetalation/insertion, and reductive elimination.</span><ul class="subtopic-list"><li data-coupling="suzuki">1. Suzuki Coupling</li><li data-coupling="heck">2. Heck Reaction</li><li data-coupling="sonogashira">3. Sonogashira Coupling</li><li data-coupling="stille">4. Stille Coupling</li><li data-coupling="negishi">5. Negishi Coupling</li></ul></div>
+      <div class="syllabus-item"><strong>33. Homo Coupling</strong><span>Symmetrical bond formation and dimerization pathways.</span><ul class="subtopic-list"><li data-coupling="wurtz">6. Wurtz Reaction</li><li data-coupling="glaser">7. Glaser Coupling</li></ul></div>
+      <div class="syllabus-item"><strong>34. C-N / C-O Coupling</strong><span>Heteroatom coupling for aryl amines, ethers, and medicinal chemistry scaffolds.</span><ul class="subtopic-list"><li data-coupling="buchwald">8. Buchwald-Hartwig Coupling</li><li data-coupling="ullmann">9. Ullmann Reaction</li></ul></div>
+    </div>
+    <table class="chem-table">
+      <thead><tr><th>Coupling</th><th>Partners</th><th>Catalyst/System</th><th>R&D Note</th></tr></thead>
+      <tbody>
+        <tr><td><span class="click-name" data-coupling="suzuki">1. Suzuki</span></td><td>Ar-X + boronic acid</td><td>Pd/base</td><td>Most pharma-friendly; boron reagents are relatively low toxicity.</td></tr>
+        <tr><td><span class="click-name" data-coupling="heck">2. Heck</span></td><td>Ar-X + alkene</td><td>Pd/base</td><td>Forms substituted alkenes, often E-selective.</td></tr>
+        <tr><td><span class="click-name" data-coupling="sonogashira">3. Sonogashira</span></td><td>Ar-X + terminal alkyne</td><td>Pd/Cu/amine</td><td>Cu can cause Glaser homocoupling.</td></tr>
+        <tr><td><span class="click-name" data-coupling="stille">4. Stille</span></td><td>Ar-X + organotin</td><td>Pd</td><td>Reliable but tin toxicity is a purification concern.</td></tr>
+        <tr><td><span class="click-name" data-coupling="negishi">5. Negishi</span></td><td>Ar-X + organozinc</td><td>Pd or Ni</td><td>Good reactivity; organozincs are moisture-sensitive.</td></tr>
+        <tr><td><span class="click-name" data-coupling="wurtz">6. Wurtz</span></td><td>Alkyl halides</td><td>Na/dry ether</td><td>Classical homo coupling; best for symmetrical alkanes.</td></tr>
+        <tr><td><span class="click-name" data-coupling="glaser">7. Glaser</span></td><td>Terminal alkyne</td><td>Cu/O₂</td><td>Oxidative homocoupling to diyne.</td></tr>
+        <tr><td><span class="click-name" data-coupling="buchwald">8. Buchwald-Hartwig</span></td><td>Ar-X + amine</td><td>Pd/ligand/base</td><td>Core C-N bond method in medicinal chemistry.</td></tr>
+        <tr><td><span class="click-name" data-coupling="ullmann">9. Ullmann</span></td><td>Ar-X + N/O/Cu partner</td><td>Cu/ligand/base</td><td>Useful but can need high temperature or ligand tuning.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</main>
+<footer>
+  <p>OrganoChem — <span>The Complete Organic Chemistry by Subrat Biswas</span></p>
+  <p style="margin-top:0.5rem"><span>Subrat Biswas is a Research Scientist in the API Research and Development division at Sun Pharmaceutical Industries Ltd., with over four years of experience in synthetic organic chemistry and process development. His work focuses on API synthesis, impurity profiling, and scale-up of chemical processes, with a strong emphasis on regulatory compliance and efficient drug development.</p>
+</footer>
+<script src="../assets/js/main.js?v=2"></script>
+</body>
+</html>
+

@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Part 08 - Analytical and Practical Organic</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-multi-page="true" id="top">
+<div class="progress-bar" id="progress"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="overlay-backdrop" id="backdrop" onclick="closeDetail()"></div>
+<div class="detail-overlay" id="detailPanel">
+  <div onclick="closeDetail()" class="detail-close">âœ•</div>
+  <div id="detailContent"></div>
+</div>
+<nav>
+  <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit">OrganoChem</a></div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Index</a></li>
+    <li><a href="../pdf-notes.html">PDF Notes</a></li>
+    <li class="parts-menu">
+      <button class="parts-button" type="button">Parts</button>
+      <div class="parts-dropdown">
+        <a href="../parts/part-01-goc.html"><span>01</span>General Organic Chemistry</a>
+        <a href="../parts/part-02-stereochemistry.html"><span>02</span>Stereochemistry</a>
+        <a href="../parts/part-03-functional-groups.html"><span>03</span>Functional Group Chemistry</a>
+        <a href="../parts/part-04-redox.html"><span>04</span>Oxidation & Reduction</a>
+        <a href="../parts/part-05-rearrangements.html"><span>05</span>Rearrangement Reactions</a>
+        <a href="../parts/part-06-couplings.html"><span>06</span>Coupling Reactions</a>
+        <a href="../parts/part-07-named-reactions.html"><span>07</span>Named Reactions</a>
+        <a href="../parts/part-08-analytical.html"><span>08</span>Analytical & Practical Organic</a>
+        <a href="../parts/part-09-pharma-industrial.html"><span>09</span>Industrial & Pharma Organic Chemistry</a>
+        <a href="../parts/part-10-advanced.html"><span>10</span>Advanced Concepts</a>
+        <a href="../interview.html"><span>IV</span>Interview Preparation</a>
+        <a href="../structure-editor.html"><span>SE</span>Online Structure Editor</a>
+      </div>
+    </li>
+    <li><a href="../interview.html">Interview</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Toggle dark / light mode"></button>
+    <div class="nav-indicator"></div>
+  </div>
+</nav>
+<aside class="floating-toc" aria-label="Chapter navigation">
+  <a href="../parts/part-01-goc.html" title="GOC">01</a>
+  <a href="../parts/part-02-stereochemistry.html" title="Stereochemistry">02</a>
+  <a href="../parts/part-03-functional-groups.html" title="Functional Groups">03</a>
+  <a href="../parts/part-04-redox.html" title="Oxidation & Reduction">04</a>
+  <a href="../parts/part-05-rearrangements.html" title="Rearrangements">05</a>
+  <a href="../parts/part-06-couplings.html" title="Couplings">06</a>
+  <a href="../parts/part-07-named-reactions.html" title="Named Reactions">07</a>
+  <a href="../parts/part-08-analytical.html" title="Analytical">08</a>
+  <a href="../parts/part-09-pharma-industrial.html" title="Pharma">09</a>
+  <a href="../parts/part-10-advanced.html" title="Advanced">10</a>
+  <a href="../interview.html" title="Interview Prep">IV</a>
+</aside>
+<a class="top-button" href="#top" title="Back to top">â†‘</a>
+<main>
+<section id="analytical-practical" class="atlas-page active">
+  <div class="chapter-divider">
+    <div class="chapter-num">08</div>
+    <div class="chapter-info"><div class="chapter-label">Part Eight</div><div class="chapter-title">Analytical & Practical Organic</div></div>
+    <div class="chapter-line"></div>
+  </div>
+  <div class="content-area">
+    <div class="section-badge">Lab Skillset</div>
+    <h2 class="glow-header">Purify, Monitor & Prove Structure</h2>
+    <p class="glow-sub">Synthesis is only complete when the reaction is monitored, purified, and structurally confirmed.</p>
+    <div class="page-actions"><a class="page-pill" href="../index.html">Back to Master Index</a><a class="page-pill" href="../parts/part-08-analytical.html#spectroscopy">Open Existing Spectroscopy Page</a><a class="page-pill" href="../parts/part-09-pharma-industrial.html">Next: Pharma</a></div>
+    <div class="syllabus-list">
+      <div class="syllabus-item"><strong>39. TLC</strong><span>Rf value, mobile phase selection, UV/iodine/KMnO4 visualization, reaction monitoring.</span></div>
+      <div class="syllabus-item"><strong>40. Column Chromatography</strong><span>Stationary/mobile phase, polarity gradient, fraction collection, flash chromatography.</span></div>
+      <div class="syllabus-item"><strong>41. Distillation Techniques</strong><span>Simple, fractional, vacuum, steam, azeotropic distillation and boiling point logic.</span></div>
+      <div class="syllabus-item"><strong>42. Spectroscopy</strong><span>IR for functional groups, NMR for connectivity/stereochemistry, MS for molecular weight/fragments.</span></div>
+    </div>
+  </div>
+</section>
+<section id="spectroscopy" class="atlas-page active">
+  <div class="chapter-divider">
+    <div class="chapter-num">06</div>
+    <div class="chapter-info">
+      <div class="chapter-label">Chapter Six</div>
+      <div class="chapter-title">Spectroscopic Analysis & Structure Determination</div>
+    </div>
+    <div class="chapter-line"></div>
+  </div>
+  <div class="content-area">
+    <div class="section-badge">Analytical Methods</div>
+    <h2 class="glow-header">Seeing Molecules</h2>
+    <p class="glow-sub">Spectroscopy allows chemists to determine molecular structure by studying how molecules interact with electromagnetic radiation.</p>
+
+    <div class="accordion">
+      <div class="accordion-item" id="acc-ir">
+        <div class="accordion-header" onclick="toggleAcc('acc-ir')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">IR Spectroscopy (Infrared)</div>
+          <div class="accordion-meta">400–4000 cm⁻¹ · Bond stretching & bending</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p style="font-size:0.78rem;color:var(--text2);line-height:1.7;margin-bottom:1rem">IR spectroscopy identifies functional groups by their characteristic bond stretching/bending vibrations. The "fingerprint region" (600–1500 cm⁻¹) is unique to each compound.</p>
+            <table class="chem-table">
+              <thead><tr><th>Wavenumber (cm⁻¹)</th><th>Bond/Group</th><th>Intensity/Shape</th></tr></thead>
+              <tbody>
+                <tr><td>3200–3550</td><td>O–H stretch (alcohol)</td><td>Broad, strong</td></tr>
+                <tr><td>2500–3300</td><td>O–H stretch (carboxylic acid)</td><td>Very broad</td></tr>
+                <tr><td>3300–3500</td><td>N–H stretch (amine/amide)</td><td>Medium, 1 (3°) or 2 peaks</td></tr>
+                <tr><td>2850–2960</td><td>C–H stretch (alkane, sp³)</td><td>Multiple, medium</td></tr>
+                <tr><td>3020–3100</td><td>C–H stretch (alkene/arene, sp²)</td><td>Medium</td></tr>
+                <tr><td>3300</td><td>≡C–H stretch (terminal alkyne)</td><td>Sharp, strong</td></tr>
+                <tr><td>2100–2260</td><td>C≡C or C≡N stretch</td><td>Weak to medium</td></tr>
+                <tr><td>1620–1680</td><td>C=C stretch (alkene)</td><td>Medium</td></tr>
+                <tr><td>1600, 1475</td><td>C=C stretch (aromatic)</td><td>Medium</td></tr>
+                <tr><td>1700–1725</td><td>C=O stretch (ketone/aldehyde)</td><td>Strong, sharp</td></tr>
+                <tr><td>1735–1750</td><td>C=O stretch (ester)</td><td>Strong, sharp</td></tr>
+                <tr><td>1700–1725</td><td>C=O stretch (carboxylic acid)</td><td>Strong</td></tr>
+                <tr><td>1630–1690</td><td>C=O stretch (amide)</td><td>Strong + N-H bends</td></tr>
+                <tr><td>1040–1260</td><td>C–O stretch (alcohol/ether)</td><td>Strong</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-nmr">
+        <div class="accordion-header" onclick="toggleAcc('acc-nmr')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">¹H and ¹³C NMR Spectroscopy</div>
+          <div class="accordion-meta">Chemical shift · Coupling · Integration</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <table class="chem-table">
+              <thead><tr><th>Proton Environment</th><th>δ (ppm)</th></tr></thead>
+              <tbody>
+                <tr><td>TMS reference</td><td>0.0</td></tr>
+                <tr><td>R–CH₃ (alkyl)</td><td>0.7–1.3</td></tr>
+                <tr><td>R–CH₂–R (alkyl)</td><td>1.2–1.4</td></tr>
+                <tr><td>R₃CH (alkyl)</td><td>1.4–1.7</td></tr>
+                <tr><td>C=C–CH₃ (allylic)</td><td>1.6–2.2</td></tr>
+                <tr><td>RC≡C–H (terminal alkyne)</td><td>1.8–3.1</td></tr>
+                <tr><td>Ar–CH₃ (benzylic)</td><td>2.2–2.5</td></tr>
+                <tr><td>R–CO–CH₃ (α to carbonyl)</td><td>2.1–2.6</td></tr>
+                <tr><td>Cl–CH, Br–CH (α to halide)</td><td>2.5–4.0</td></tr>
+                <tr><td>R–O–CH₃ (methoxy)</td><td>3.3–3.8</td></tr>
+                <tr><td>R–OH (alcohol)</td><td>0.5–5.0 (variable)</td></tr>
+                <tr><td>CH₂=CHR (vinyl)</td><td>4.5–6.5</td></tr>
+                <tr><td>Ar–H (aromatic)</td><td>6.5–8.0</td></tr>
+                <tr><td>R–CHO (aldehyde)</td><td>9.4–10.0</td></tr>
+                <tr><td>R–COOH (carboxylic acid)</td><td>10–12 (very broad)</td></tr>
+              </tbody>
+            </table>
+            <div class="info-box" style="margin-top:1rem"><strong>N+1 Rule:</strong> A proton with N equivalent neighboring protons shows N+1 peaks (multiplet). Doublet (d): 1 neighbor; triplet (t): 2; quartet (q): 3; quintet: 4, etc. J-coupling constant (Hz) measures through-bond H–H coupling.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-ms">
+        <div class="accordion-header" onclick="toggleAcc('acc-ms')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Mass Spectrometry (MS)</div>
+          <div class="accordion-meta">Molecular ion · Fragmentation · m/z</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p style="font-size:0.78rem;color:var(--text2);line-height:1.7;margin-bottom:1rem">MS measures the mass-to-charge ratio (m/z) of ions. The molecular ion (M⁺•) gives the molecular weight. Fragmentation pattern gives structural information. High-resolution MS gives exact molecular formula.</p>
+            <div class="info-box"><strong>Key fragmentations:</strong> α-cleavage (next to heteroatom or C=O), McLafferty rearrangement (γ-H transfer), allylic/benzylic cleavage (stable carbocation), retro Diels-Alder in cyclic systems.</div>
+            <div class="info-box"><strong>Isotope patterns:</strong> Cl (M:M+2 = 3:1), Br (M:M+2 ≈ 1:1). Useful for identifying presence of halogens. Each ¹³C adds 1.1% to M+1 peak.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-uv">
+        <div class="accordion-header" onclick="toggleAcc('acc-uv')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">UV-Vis & Woodward-Fieser Rules</div>
+          <div class="accordion-meta">Electronic transitions · Chromophores</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p style="font-size:0.78rem;color:var(--text2);line-height:1.7;margin-bottom:1rem">UV-Vis measures electronic transitions (π→π*, n→π*). Conjugation extends λmax (bathochromic shift). Woodward-Fieser rules predict λmax for conjugated dienes and enones.</p>
+            <table class="chem-table">
+              <thead><tr><th>Chromophore</th><th>λmax (nm)</th><th>Transition</th></tr></thead>
+              <tbody>
+                <tr><td>Isolated C=C</td><td>~170</td><td>π→π*</td></tr>
+                <tr><td>Conjugated diene</td><td>~217–253</td><td>π→π*</td></tr>
+                <tr><td>Benzene</td><td>254 (weak), 204</td><td>π→π*</td></tr>
+                <tr><td>Carbonyl (n→π*)</td><td>~270–280</td><td>n→π* (weak, forbidden)</td></tr>
+                <tr><td>Carbonyl (π→π*)</td><td>~180</td><td>π→π*</td></tr>
+                <tr><td>α,β-unsaturated ketone</td><td>~215–250</td><td>π→π*</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline of Nobel Prizes -->
+    <h3 class="sub" style="margin-top:3rem">Nobel Prizes in Organic Chemistry</h3>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-year">1902</div><div class="timeline-title">Emil Fischer</div><div class="timeline-text">Sugar and purine syntheses. Established stereospecificity of enzyme reactions ("lock and key" model).</div></div>
+      <div class="timeline-item"><div class="timeline-year">1912</div><div class="timeline-title">Victor Grignard & Paul Sabatier</div><div class="timeline-text">Grignard reagents (organomagnesium halides); Sabatier for catalytic hydrogenation with finely divided metals.</div></div>
+      <div class="timeline-item"><div class="timeline-year">1947</div><div class="timeline-title">Sir Robert Robinson</div><div class="timeline-text">Investigations on plant products (alkaloids). Tropinone synthesis, morphine structure, strychnine.</div></div>
+      <div class="timeline-item"><div class="timeline-year">1950</div><div class="timeline-title">Diels & Alder</div><div class="timeline-text">Discovery and development of the [4+2] diene synthesis (Diels-Alder reaction).</div></div>
+      <div class="timeline-item"><div class="timeline-year">1965</div><div class="timeline-title">R.B. Woodward</div><div class="timeline-text">Outstanding achievements in organic synthesis (reserpine, chlorophyll, strychnine, vitamin B12).</div></div>
+      <div class="timeline-item"><div class="timeline-year">1975</div><div class="timeline-title">John Cornforth & Vladimir Prelog</div><div class="timeline-text">Stereochemistry of enzyme-catalysed reactions; stereochemistry of organic molecules and reactions.</div></div>
+      <div class="timeline-item"><div class="timeline-year">1979</div><div class="timeline-title">Herbert Brown & Georg Wittig</div><div class="timeline-text">Organoboron compounds (hydroboration); phosphorus-containing reagents (Wittig reaction).</div></div>
+      <div class="timeline-item"><div class="timeline-year">1984</div><div class="timeline-title">Bruce Merrifield</div><div class="timeline-text">Solid phase peptide synthesis methodology.</div></div>
+      <div class="timeline-item"><div class="timeline-year">2001</div><div class="timeline-title">Sharpless, Noyori, Knowles</div><div class="timeline-text">Catalytic asymmetric synthesis: chiral epoxidation, asymmetric hydrogenation.</div></div>
+      <div class="timeline-item"><div class="timeline-year">2005</div><div class="timeline-title">Grubbs, Schrock & Chauvin</div><div class="timeline-text">Development of olefin metathesis (RCM, ROMP, ADMET). Industrial and synthesis applications.</div></div>
+      <div class="timeline-item"><div class="timeline-year">2010</div><div class="timeline-title">Heck, Negishi & Suzuki</div><div class="timeline-text">Palladium-catalysed cross couplings in organic synthesis.</div></div>
+      <div class="timeline-item"><div class="timeline-year">2021</div><div class="timeline-title">Benjamin List & David MacMillan</div><div class="timeline-text">Development of asymmetric organocatalysis (enamine and iminium catalysis).</div></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <p>OrganoChem — <span>The Complete Organic Chemistry by Subrat Biswas</span></p>
+  <p style="margin-top:0.5rem"><span>Subrat Biswas is a Research Scientist in the API Research and Development division at Sun Pharmaceutical Industries Ltd., with over four years of experience in synthetic organic chemistry and process development. His work focuses on API synthesis, impurity profiling, and scale-up of chemical processes, with a strong emphasis on regulatory compliance and efficient drug development.</p>
+</footer>
+<script src="../assets/js/main.js?v=2"></script>
+</body>
+</html>
+

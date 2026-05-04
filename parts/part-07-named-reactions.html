@@ -1,0 +1,606 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Part 07 - Named Reactions</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-multi-page="true" id="top">
+<div class="progress-bar" id="progress"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="overlay-backdrop" id="backdrop" onclick="closeDetail()"></div>
+<div class="detail-overlay" id="detailPanel">
+  <div onclick="closeDetail()" class="detail-close">âœ•</div>
+  <div id="detailContent"></div>
+</div>
+<nav>
+  <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit">OrganoChem</a></div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Index</a></li>
+    <li><a href="../pdf-notes.html">PDF Notes</a></li>
+    <li class="parts-menu">
+      <button class="parts-button" type="button">Parts</button>
+      <div class="parts-dropdown">
+        <a href="../parts/part-01-goc.html"><span>01</span>General Organic Chemistry</a>
+        <a href="../parts/part-02-stereochemistry.html"><span>02</span>Stereochemistry</a>
+        <a href="../parts/part-03-functional-groups.html"><span>03</span>Functional Group Chemistry</a>
+        <a href="../parts/part-04-redox.html"><span>04</span>Oxidation & Reduction</a>
+        <a href="../parts/part-05-rearrangements.html"><span>05</span>Rearrangement Reactions</a>
+        <a href="../parts/part-06-couplings.html"><span>06</span>Coupling Reactions</a>
+        <a href="../parts/part-07-named-reactions.html"><span>07</span>Named Reactions</a>
+        <a href="../parts/part-08-analytical.html"><span>08</span>Analytical & Practical Organic</a>
+        <a href="../parts/part-09-pharma-industrial.html"><span>09</span>Industrial & Pharma Organic Chemistry</a>
+        <a href="../parts/part-10-advanced.html"><span>10</span>Advanced Concepts</a>
+        <a href="../interview.html"><span>IV</span>Interview Preparation</a>
+        <a href="../structure-editor.html"><span>SE</span>Online Structure Editor</a>
+      </div>
+    </li>
+    <li><a href="../interview.html">Interview</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Toggle dark / light mode"></button>
+    <div class="nav-indicator"></div>
+  </div>
+</nav>
+<aside class="floating-toc" aria-label="Chapter navigation">
+  <a href="../parts/part-01-goc.html" title="GOC">01</a>
+  <a href="../parts/part-02-stereochemistry.html" title="Stereochemistry">02</a>
+  <a href="../parts/part-03-functional-groups.html" title="Functional Groups">03</a>
+  <a href="../parts/part-04-redox.html" title="Oxidation & Reduction">04</a>
+  <a href="../parts/part-05-rearrangements.html" title="Rearrangements">05</a>
+  <a href="../parts/part-06-couplings.html" title="Couplings">06</a>
+  <a href="../parts/part-07-named-reactions.html" title="Named Reactions">07</a>
+  <a href="../parts/part-08-analytical.html" title="Analytical">08</a>
+  <a href="../parts/part-09-pharma-industrial.html" title="Pharma">09</a>
+  <a href="../parts/part-10-advanced.html" title="Advanced">10</a>
+  <a href="../interview.html" title="Interview Prep">IV</a>
+</aside>
+<a class="top-button" href="#top" title="Back to top">â†‘</a>
+<main>
+<section id="named-reactions" class="atlas-page active">
+  <div class="chapter-divider">
+    <div class="chapter-num">07</div>
+    <div class="chapter-info">
+      <div class="chapter-label">Chapter Three</div>
+      <div class="chapter-title">Name Reactions — Complete Atlas</div>
+    </div>
+    <div class="chapter-line"></div>
+  </div>
+  <div class="content-area">
+    <div class="section-badge">200+ Reactions</div>
+    <h2 class="glow-header">The Reaction Matrix</h2>
+    <p class="glow-sub">Every major named reaction in organic chemistry, classified by mechanism type. Click any cell to view full details, mechanism, conditions, and examples.</p>
+    <div class="page-actions"><a class="page-pill" href="../index.html">Back to Master Index</a><a class="page-pill" href="../parts/part-08-analytical.html">Next: Analytical</a></div>
+    <div class="syllabus-list">
+      <div class="syllabus-item"><strong>35. Carbon-Carbon Formation</strong><span>Aldol, Claisen, Wittig, Grignard, Michael, Mannich and other C-C bond-forming reactions.</span></div>
+      <div class="syllabus-item"><strong>36. Substitution Reactions</strong><span>Sandmeyer, Finkelstein, Gabriel, Mitsunobu and substitution logic across aliphatic/aromatic systems.</span></div>
+      <div class="syllabus-item"><strong>37. Oxidation / Reduction</strong><span>Swern oxidation, Birch reduction, Clemmensen, Wolff-Kishner and named redox transformations.</span></div>
+      <div class="syllabus-item"><strong>38. Cyclization / Pericyclic</strong><span>Diels-Alder, Paal-Knorr, Hantzsch, Biginelli, Huisgen and ring-building reactions.</span></div>
+    </div>
+
+    <div class="search-bar">
+      <span class="search-icon">⌕</span>
+      <input class="search-input" type="text" placeholder="Search reactions... (e.g. Grignard, Aldol, SN2)" oninput="filterReactions(this.value)" id="rxnSearch">
+    </div>
+
+    <div id="rxnLegend" style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:1.5rem">
+      <span style="font-size:0.6rem;color:var(--text3);letter-spacing:0.1em;margin-right:0.3rem">LEGEND:</span>
+      <span style="padding:0.2rem 0.6rem;font-size:0.58rem;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.2);color:var(--accent)">Addition</span>
+      <span style="padding:0.2rem 0.6rem;font-size:0.58rem;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:#a78bfa">Substitution</span>
+      <span style="padding:0.2rem 0.6rem;font-size:0.58rem;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);color:var(--accent3)">Elimination</span>
+      <span style="padding:0.2rem 0.6rem;font-size:0.58rem;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:var(--accent4)">Reduction</span>
+      <span style="padding:0.2rem 0.6rem;font-size:0.58rem;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);color:#fca5a5">Oxidation</span>
+      <span style="padding:0.2rem 0.6rem;font-size:0.58rem;background:rgba(236,72,153,0.08);border:1px solid rgba(236,72,153,0.2);color:#f9a8d4">Rearrangement</span>
+      <span style="padding:0.2rem 0.6rem;font-size:0.58rem;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2);color:#c4b5fd">Cycloaddition</span>
+      <span style="padding:0.2rem 0.6rem;font-size:0.58rem;background:rgba(6,182,212,0.08);border:1px solid rgba(6,182,212,0.2);color:#67e8f9">Coupling</span>
+    </div>
+
+    <div class="reaction-matrix" id="reactionMatrix"></div>
+
+    <!-- CLASSIFIED BY TYPE -->
+    <h3 class="sub" style="margin-top:3rem">Addition Reactions</h3>
+    <div class="accordion" id="addition-acc">
+
+      <div class="accordion-item" id="acc-grignard">
+        <div class="accordion-header" onclick="toggleAcc('acc-grignard')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Grignard Reaction</div>
+          <div class="accordion-meta">1912 Nobel · Victor Grignard</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <div class="reaction-card">
+              <div class="reaction-name">Grignard Reaction</div>
+              <div class="reaction-year">Discovered 1900 · Nobel Prize 1912 · Victor Grignard</div>
+              <div class="reaction-desc">Organomagnesium halides (Grignard reagents, RMgX) are prepared by reacting alkyl/aryl halides with magnesium metal in dry ether. These nucleophilic reagents add to carbonyl compounds (aldehydes, ketones, CO₂, esters) to form alcohols after hydrolysis. The reaction is extremely versatile for C–C bond formation.</div>
+              <div class="formula-big">RX + Mg → RMgX (in dry ether)<br>RMgX + R'CHO → R–CH(OMgX)–R' → R–CH(OH)–R' (after H₃O⁺)</div>
+              <div class="reaction-tags">
+                <span class="reaction-tag tag-mech">Nucleophilic Addition</span>
+                <span class="reaction-tag tag-type">C–C Bond Formation</span>
+                <span class="reaction-tag tag-cond">Dry Ether, Anhydrous</span>
+              </div>
+              <div style="margin-top:1rem">
+                <div class="detail-section-title">PRODUCTS FORMED</div>
+                <table class="chem-table">
+                  <thead><tr><th>Carbonyl Source</th><th>Product</th></tr></thead>
+                  <tbody>
+                    <tr><td>Formaldehyde (HCHO)</td><td>Primary alcohol (1°)</td></tr>
+                    <tr><td>Aldehyde (RCHO)</td><td>Secondary alcohol (2°)</td></tr>
+                    <tr><td>Ketone (RCOR')</td><td>Tertiary alcohol (3°)</td></tr>
+                    <tr><td>CO₂</td><td>Carboxylic acid</td></tr>
+                    <tr><td>Ester (2 equiv)</td><td>Tertiary alcohol (3°)</td></tr>
+                    <tr><td>Epoxide</td><td>Alcohol (chain extended by 2C)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-aldol">
+        <div class="accordion-header" onclick="toggleAcc('acc-aldol')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Aldol Addition & Aldol Condensation</div>
+          <div class="accordion-meta">Base or Acid catalysed · α-carbon reactivity</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <div class="reaction-card">
+              <div class="reaction-name">Aldol Addition / Condensation</div>
+              <div class="reaction-desc">The aldol reaction involves the α-carbon of one carbonyl compound acting as nucleophile toward the carbonyl of another. Base catalysis generates an enolate; acid catalysis generates an enol. The initial β-hydroxy carbonyl compound (aldol product) may dehydrate to an α,β-unsaturated carbonyl (aldol condensation).</div>
+              <div class="formula-big">2 CH₃CHO →(NaOH)→ CH₃CH(OH)CH₂CHO (aldol)<br>→(–H₂O, Δ)→ CH₃CH=CHCHO (crotonaldehyde)</div>
+              <div class="reaction-tags">
+                <span class="reaction-tag tag-mech">Enolate Chemistry</span>
+                <span class="reaction-tag tag-type">C–C Bond Formation</span>
+                <span class="reaction-tag tag-cond">NaOH or H⁺/Δ</span>
+              </div>
+              <div class="info-box" style="margin-top:1rem"><strong>Cross Aldol (Claisen-Schmidt):</strong> Aldehyde + ketone with no α-H → mixed aldol condensation. ArCHO + CH₃COCH₃ → chalcone (ArCH=CHCOCH₃)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-wittig">
+        <div class="accordion-header" onclick="toggleAcc('acc-wittig')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Wittig Reaction</div>
+          <div class="accordion-meta">1979 Nobel · Georg Wittig · Olefin synthesis</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <div class="reaction-card">
+              <div class="reaction-name">Wittig Reaction</div>
+              <div class="reaction-year">Georg Wittig — Nobel Prize 1979</div>
+              <div class="reaction-desc">Phosphorus ylides (R₃P=CR₂) react with aldehydes and ketones to replace C=O with C=C. The key advantage is precise control of double bond position (unlike elimination). Nonstabilized ylides give Z-alkenes; stabilized ylides give E-alkenes.</div>
+              <div class="formula-big">R₂C=O + Ph₃P=CR'₂ → R₂C=CR'₂ + Ph₃P=O</div>
+              <div class="reaction-tags">
+                <span class="reaction-tag tag-mech">[2+2] cycloaddition</span>
+                <span class="reaction-tag tag-type">C=C Formation</span>
+                <span class="reaction-tag tag-cond">THF/BuLi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-diels">
+        <div class="accordion-header" onclick="toggleAcc('acc-diels')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Diels-Alder Reaction</div>
+          <div class="accordion-meta">1950 Nobel · Pericyclic [4+2]</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <div class="reaction-card">
+              <div class="reaction-name">Diels-Alder Cycloaddition</div>
+              <div class="reaction-year">Otto Diels & Kurt Alder — Nobel Prize 1950</div>
+              <div class="reaction-desc">A [4+2] pericyclic cycloaddition between a conjugated diene (4π electrons) and a dienophile (2π electrons, usually electron-poor). The reaction is concerted, stereospecific (syn addition on both components), highly endo-selective, and forms six-membered rings. The diene must be in the s-cis conformation.</div>
+              <div class="formula-big">Diene (s-cis) + Dienophile → Cyclohexene derivative</div>
+              <div class="reaction-tags">
+                <span class="reaction-tag tag-mech">[4+2] Pericyclic</span>
+                <span class="reaction-tag tag-type">Ring Formation</span>
+                <span class="reaction-tag tag-cond">Thermal, no catalyst</span>
+              </div>
+              <div class="info-box" style="margin-top:1rem"><strong>Endo Rule:</strong> Endo transition state preferred due to secondary orbital interactions. Endo product is kinetic; exo is thermodynamic. <strong>Electron demand:</strong> Electron-rich diene + electron-poor dienophile (EWG) = HDA (Normal electron demand). Inverse: LUMO diene + HOMO dienophile.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBSTITUTION REACTIONS -->
+    <h3 class="sub" style="margin-top:2rem">Substitution Reactions</h3>
+    <div class="accordion">
+      <div class="accordion-item" id="acc-sn1sn2">
+        <div class="accordion-header" onclick="toggleAcc('acc-sn1sn2')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">SN1 and SN2 Mechanisms</div>
+          <div class="accordion-meta">Nucleophilic Aliphatic Substitution</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <div class="two-col">
+              <div class="reaction-card">
+                <div class="reaction-name">SN2 — Bimolecular Nucleophilic Substitution</div>
+                <div class="reaction-desc">Concerted, one-step mechanism. Nucleophile attacks backside of electrophilic carbon while leaving group departs. Leads to Walden inversion (inversion of configuration). Rate = k[RX][Nu⁻]. Favoured by: strong nucleophile, polar aprotic solvent, primary substrate, methyl &gt; 1° &gt; 2°. 3° substrates give elimination instead.</div>
+                <div class="reaction-tags">
+                  <span class="reaction-tag tag-mech">Bimolecular</span>
+                  <span class="reaction-tag tag-type">Inversion</span>
+                  <span class="reaction-tag tag-cond">Polar Aprotic</span>
+                </div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">SN1 — Unimolecular Nucleophilic Substitution</div>
+                <div class="reaction-desc">Two-step mechanism: (1) Ionization to form carbocation (rate-determining); (2) Nucleophile attacks planar carbocation from either face → racemization. Rate = k[RX]. Favoured by: stable carbocation (3° > 2°), polar protic solvent, weak nucleophile. Rearrangements (1,2-hydride/methyl shifts) possible.</div>
+                <div class="reaction-tags">
+                  <span class="reaction-tag tag-mech">Unimolecular</span>
+                  <span class="reaction-tag tag-type">Racemization</span>
+                  <span class="reaction-tag tag-cond">Polar Protic</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-fc">
+        <div class="accordion-header" onclick="toggleAcc('acc-fc')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Friedel-Crafts Reactions</div>
+          <div class="accordion-meta">EAS · Alkylation & Acylation</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <div class="two-col">
+              <div class="reaction-card">
+                <div class="reaction-name">Friedel-Crafts Alkylation</div>
+                <div class="reaction-desc">Aromatic ring alkylated by R⁺ (from RX/AlCl₃). Problems: polyalkylation (product more reactive), carbocation rearrangements. Cannot be used with deactivated rings. Conditions: AlCl₃ (Lewis acid) or HF, BF₃.</div>
+                <div class="reaction-eq">ArH + RX → Ar–R + HX (with AlCl₃)</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Friedel-Crafts Acylation</div>
+                <div class="reaction-desc">Aromatic ring acylated by RCO⁺ (acylium ion from RCOCl/AlCl₃). No polyacylation (product deactivated by C=O). No rearrangements (acylium is resonance-stabilized). Product ketone can be reduced to alkylbenzene (Clemmensen/Wolff-Kishner).</div>
+                <div class="reaction-eq">ArH + RCOCl → Ar–COR + HCl (with AlCl₃)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-finkelstein">
+        <div class="accordion-header" onclick="toggleAcc('acc-finkelstein')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Finkelstein, Menschutkin & Sandmeyer Reactions</div>
+          <div class="accordion-meta">Halide exchange & diazonium</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <div class="three-col">
+              <div class="reaction-card">
+                <div class="reaction-name">Finkelstein Reaction</div>
+                <div class="reaction-desc">Halide exchange: RCl/RBr + NaI (acetone) → RI + NaCl/NaBr↓. Driven by precipitation of NaCl or NaBr in acetone. SN2 mechanism.</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Menschutkin Reaction</div>
+                <div class="reaction-desc">Alkyl halide + tertiary amine → quaternary ammonium salt. SN2 mechanism. Used to make phase-transfer catalysts and quaternary ammonium surfactants.</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Sandmeyer Reaction</div>
+                <div class="reaction-desc">Aryl diazonium salts + CuX (Sandmeyer) or Cu powder (Gattermann) → aryl halides. Also gives CN, SCN groups. Critical for synthesizing aryl halides not available via direct halogenation.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ELIMINATION REACTIONS -->
+    <h3 class="sub" style="margin-top:2rem">Elimination Reactions</h3>
+    <div class="accordion">
+      <div class="accordion-item" id="acc-e1e2">
+        <div class="accordion-header" onclick="toggleAcc('acc-e1e2')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">E1 and E2 Elimination Mechanisms</div>
+          <div class="accordion-meta">Dehydrohalogenation · Zaitsev & Hofmann</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <div class="two-col">
+              <div class="reaction-card">
+                <div class="reaction-name">E2 — Bimolecular Elimination</div>
+                <div class="reaction-desc">Concerted one-step: base removes β-H while C–X bond breaks. Requires antiperiplanar geometry (dihedral = 180°). Rate = k[RX][Base]. Strong, bulky bases favour E2 over SN2. Zaitsev product (more substituted alkene) is major with small bases. Hofmann product with bulky bases (t-BuOK).</div>
+                <div class="reaction-tags">
+                  <span class="reaction-tag tag-mech">Anti-periplanar</span>
+                  <span class="reaction-tag tag-type">Zaitsev/Hofmann</span>
+                  <span class="reaction-tag tag-cond">Strong base, Δ</span>
+                </div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">E1 — Unimolecular Elimination</div>
+                <div class="reaction-desc">Two steps: ionization to carbocation (RDS), then loss of β-H to base. Rate = k[RX]. Favoured by: 3° substrates, polar protic solvents, weak bases. Zaitsev product major. Competes with SN1. Can involve rearrangements before elimination.</div>
+                <div class="reaction-tags">
+                  <span class="reaction-tag tag-mech">Via carbocation</span>
+                  <span class="reaction-tag tag-type">Zaitsev</span>
+                  <span class="reaction-tag tag-cond">Weak base, polar protic</span>
+                </div>
+              </div>
+            </div>
+            <div class="info-box" style="margin-top:0.8rem"><strong>E1cb:</strong> Carbanion intermediate; base removes β-H first, then leaving group departs. Occurs when leaving group is poor (F) or β-H is very acidic. E.g., elimination of β-fluoroketones.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-cope-elim">
+        <div class="accordion-header" onclick="toggleAcc('acc-cope-elim')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Cope, Chugaev & Hofmann Eliminations</div>
+          <div class="accordion-meta">Pyrolytic · syn-periplanar</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <div class="three-col">
+              <div class="reaction-card">
+                <div class="reaction-name">Cope Elimination</div>
+                <div class="reaction-desc">Amine oxides (R₃N⁺–O⁻) undergo syn-periplanar, intramolecular, cyclic 5-membered TS elimination at ~100–150°C to give alkene + hydroxylamine. Complementary to Hofmann (gives different regiochemistry).</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Chugaev Elimination</div>
+                <div class="reaction-desc">Xanthate esters (–O–CS–SMe) undergo cis-elimination via 6-membered cyclic TS at ~200°C. Mild, no strong base needed. Gives alkene + COS + MeSH. Hofmann-type product.</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Hofmann Elimination</div>
+                <div class="reaction-desc">Exhaustive methylation of amines (3× CH₃I, then AgOH, Δ) → elimination of trimethylamine. Anti-Zaitsev: less substituted (Hofmann) alkene preferred because trimethylammonium is bulky.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OXIDATION REACTIONS -->
+    <h3 class="sub" style="margin-top:2rem">Oxidation Reactions</h3>
+    <div class="accordion">
+      <div class="accordion-item" id="acc-oxidation">
+        <div class="accordion-header" onclick="toggleAcc('acc-oxidation')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Oxidation Reactions — Complete Classification</div>
+          <div class="accordion-meta">PCC, Jones, Swern, mCPBA, OsO₄, Baeyer-Villiger</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <table class="chem-table">
+              <thead><tr><th>Reagent</th><th>Substrate</th><th>Product</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>PCC (Pyridinium chlorochromate)</td><td>1° alcohol</td><td>Aldehyde</td><td>Mild; won't over-oxidize</td></tr>
+                <tr><td>PDC (Pyridinium dichromate)</td><td>1° alcohol</td><td>Aldehyde or acid</td><td>Oxidation state depends on conditions</td></tr>
+                <tr><td>Jones Reagent (CrO₃/H₂SO₄)</td><td>1° or 2° alcohol</td><td>Aldehyde/acid or ketone</td><td>Harsh; over-oxidizes 1° → acid</td></tr>
+                <tr><td>Swern Oxidation (DMSO/oxalyl chloride)</td><td>1° or 2° alcohol</td><td>Aldehyde or ketone</td><td>Mild; no over-oxidation</td></tr>
+                <tr><td>Dess-Martin Periodinane (DMP)</td><td>1° or 2° alcohol</td><td>Aldehyde or ketone</td><td>Very mild; tolerant of sensitive groups</td></tr>
+                <tr><td>TEMPO/NaOCl</td><td>1° alcohol</td><td>Aldehyde</td><td>Environmentally mild</td></tr>
+                <tr><td>KMnO₄ (cold, dilute)</td><td>Alkene</td><td>Diol (syn dihydroxylation)</td><td>Baeyer's test for unsaturation</td></tr>
+                <tr><td>KMnO₄ (hot, conc.)</td><td>Alkene</td><td>Ketone/acid (cleavage)</td><td>Oxidative cleavage</td></tr>
+                <tr><td>OsO₄ (cat.) + NMO</td><td>Alkene</td><td>syn-diol</td><td>Upjohn/Sharpless dihydroxylation</td></tr>
+                <tr><td>mCPBA</td><td>Alkene</td><td>Epoxide</td><td>Syn, retention of geometry</td></tr>
+                <tr><td>Baeyer-Villiger (mCPBA or H₂O₂)</td><td>Ketone</td><td>Ester or lactone</td><td>Migratory aptitude: 3°>2°>Ph>1°</td></tr>
+                <tr><td>Ozonolysis (O₃/Zn or DMS)</td><td>Alkene</td><td>Aldehyde/ketone</td><td>Reductive workup gives aldehydes</td></tr>
+                <tr><td>Ozonolysis (O₃/H₂O₂)</td><td>Alkene</td><td>Carboxylic acid</td><td>Oxidative workup</td></tr>
+                <tr><td>Tollens' Reagent (AgNO₃/NH₃)</td><td>Aldehyde</td><td>Carboxylate (silver mirror)</td><td>Distinguishes aldehyde from ketone</td></tr>
+                <tr><td>Fehling's/Benedict's (Cu²⁺)</td><td>Reducing sugar/aldehyde</td><td>Carboxylate + Cu₂O↓</td><td>Red precipitate indicates oxidation</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REDUCTION REACTIONS -->
+    <h3 class="sub" style="margin-top:2rem">Reduction Reactions</h3>
+    <div class="accordion">
+      <div class="accordion-item" id="acc-reduction">
+        <div class="accordion-header" onclick="toggleAcc('acc-reduction')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Reduction Reactions — Hydride Agents, Dissolving Metal, Catalytic</div>
+          <div class="accordion-meta">LiAlH₄, NaBH₄, Birch, Clemmensen, Wolff-Kishner</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <table class="chem-table">
+              <thead><tr><th>Reagent</th><th>Substrate</th><th>Product</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>LiAlH₄ (LAH)</td><td>Carbonyl, ester, amide, carboxylic acid, nitrile</td><td>Alcohol (or amine from nitrile)</td><td>Powerful; use dry ether; reduces all C=O</td></tr>
+                <tr><td>NaBH₄</td><td>Aldehyde, ketone</td><td>Alcohol</td><td>Mild; won't reduce ester, amide, acid</td></tr>
+                <tr><td>DIBAL-H (1 equiv., –78°C)</td><td>Ester or nitrile</td><td>Aldehyde</td><td>Stops at aldehyde at low temperature</td></tr>
+                <tr><td>Red-Al</td><td>Epoxide, alkynes</td><td>Allylic alcohol or trans-alkene</td><td>Regioselective; anti-Markovnikov epoxide opening</td></tr>
+                <tr><td>Clemmensen Reduction (Zn-Hg/HCl)</td><td>Ketone/aldehyde</td><td>Alkane (C=O → CH₂)</td><td>Acid conditions; avoids base-sensitive groups</td></tr>
+                <tr><td>Wolff-Kishner (NH₂NH₂/KOH/ethylene glycol, Δ)</td><td>Ketone/aldehyde</td><td>Alkane (via hydrazone)</td><td>Base conditions; avoids acid-sensitive groups</td></tr>
+                <tr><td>Birch Reduction (Na/Li/K in NH₃(l)/alcohol)</td><td>Arene</td><td>1,4-cyclohexadiene</td><td>EWG: C=C retained at substituted; EDG: C=C away from substituent</td></tr>
+                <tr><td>Lindlar Catalyst (H₂/Pd-CaCO₃/PbOAc)</td><td>Alkyne</td><td>cis-Alkene (Z)</td><td>Poisoned catalyst; partial reduction</td></tr>
+                <tr><td>Na/NH₃(l)</td><td>Alkyne</td><td>trans-Alkene (E)</td><td>Dissolving metal; anti addition</td></tr>
+                <tr><td>H₂/Pt or Pd/C</td><td>Alkene, alkyne, carbonyl</td><td>Alkane or saturated compound</td><td>Heterogeneous catalytic hydrogenation</td></tr>
+                <tr><td>Meerwein-Ponndorf-Verley (Al(OiPr)₃)</td><td>Ketone/aldehyde</td><td>Alcohol</td><td>Transfer hydrogenation; tolerant, selective</td></tr>
+                <tr><td>Bouveault-Blanc (Na/EtOH)</td><td>Ester</td><td>Primary alcohol</td><td>Old method; before LiAlH₄</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REARRANGEMENT REACTIONS -->
+    <h3 class="sub" style="margin-top:2rem">Rearrangement Reactions</h3>
+    <div class="accordion">
+      <div class="accordion-item" id="acc-rearr">
+        <div class="accordion-header" onclick="toggleAcc('acc-rearr')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Rearrangement Reactions — 1,2-Shifts & Sigmatropic</div>
+          <div class="accordion-meta">Pinacol, Beckmann, Baeyer-Villiger, Cope, Claisen</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <div class="three-col">
+              <div class="reaction-card">
+                <div class="reaction-name">Pinacol Rearrangement</div>
+                <div class="reaction-desc">1,2-diol (pinacol) treated with H⁺ loses one OH (→ carbocation), then 1,2-alkyl or aryl shift gives pinacolone (ketone). Driving force: more stable carbocation or carbonyl formed.</div>
+                <div class="reaction-eq">pinacol →(H⁺)→ pinacolone (methyl tert-butyl ketone)</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Beckmann Rearrangement</div>
+                <div class="reaction-desc">Oximes treated with strong acids (H₂SO₄, PCl₅, polyphosphoric acid) undergo 1,2-migration anti to the –OH group giving amides (or lactams from cyclic ketones). Used industrially (nylon-6 from cyclohexanone oxime).</div>
+                <div class="reaction-eq">R₂C=NOH →(H⁺)→ RCONHR' (amide)</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Baeyer-Villiger Rearrangement</div>
+                <div class="reaction-desc">Ketones react with peracids (mCPBA, H₂O₂/BF₃) via Criegee intermediate; group migrates anti to departing –O–OH. Migratory aptitude: tertiary > secondary > aryl > primary > methyl.</div>
+                <div class="reaction-eq">R–CO–R' + mCPBA → R–COO–R' (ester)</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Cope Rearrangement</div>
+                <div class="reaction-desc">[3,3]-Sigmatropic rearrangement of 1,5-dienes via chair-like 6-membered TS. Thermally allowed, reversible. Oxy-Cope: 2-hydroxy-1,5-diene gives δ,ε-unsaturated ketone after keto-enol tautomerism.</div>
+                <div class="reaction-eq">1,5-hexadiene →(Δ, [3,3])→1,5-hexadiene (interconversion)</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Claisen Rearrangement</div>
+                <div class="reaction-desc">Allyl vinyl ethers undergo [3,3]-sigmatropic rearrangement. Aromatic Claisen: allyl aryl ethers → ortho-allyl phenols (via cyclohexadienone). Eschenmoser-Claisen: allyl alcohol + ketene acetal → homoallylic amide.</div>
+                <div class="reaction-eq">Allyl vinyl ether →(Δ,[3,3])→ γ,δ-unsaturated carbonyl</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Curtius, Hofmann & Lossen Rearrangements</div>
+                <div class="reaction-desc">Acyl azide (Curtius) or N-haloamide/base (Hofmann) or hydroxamate (Lossen) → isocyanate via nitrene-like intermediate → amine after hydrolysis. Carbon chain shortened by one.</div>
+                <div class="reaction-eq">RCO–NH₂ →(Br₂/NaOH, Hofmann)→ RNH₂ + CO₂</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MORE NAME REACTIONS -->
+    <h3 class="sub" style="margin-top:2rem">C–C Bond Forming Reactions (Metal-Catalysed)</h3>
+    <div class="accordion">
+      <div class="accordion-item" id="acc-cc">
+        <div class="accordion-header" onclick="toggleAcc('acc-cc')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Cross-Coupling Reactions</div>
+          <div class="accordion-meta">Suzuki · Heck · Sonogashira · Negishi · Stille · 2010 Nobel</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <div class="info-box"><strong>Pd cycle:</strong> All Pd-catalysed couplings share the catalytic cycle: Oxidative Addition (Pd⁰ + R–X → R–Pd–X) → Transmetalation → Reductive Elimination (→ R–R' + Pd⁰)</div>
+            <table class="chem-table">
+              <thead><tr><th>Reaction</th><th>Coupling Partners</th><th>Product</th><th>Catalyst</th><th>Nobel</th></tr></thead>
+              <tbody>
+                <tr><td>Suzuki-Miyaura</td><td>ArX + ArB(OH)₂</td><td>Biaryl</td><td>Pd(PPh₃)₄, K₂CO₃</td><td>2010</td></tr>
+                <tr><td>Heck Reaction</td><td>ArX + R–CH=CH₂</td><td>Ar–CH=CH–R</td><td>Pd/base</td><td>2010</td></tr>
+                <tr><td>Sonogashira</td><td>ArX + RC≡CH</td><td>Ar–C≡C–R</td><td>Pd/Cu/amine</td><td>—</td></tr>
+                <tr><td>Negishi</td><td>RX + R'ZnX</td><td>R–R'</td><td>Pd or Ni</td><td>2010</td></tr>
+                <tr><td>Stille</td><td>RX + R'SnBu₃</td><td>R–R'</td><td>Pd</td><td>—</td></tr>
+                <tr><td>Kumada</td><td>RX + R'MgX</td><td>R–R'</td><td>Ni or Pd</td><td>—</td></tr>
+                <tr><td>Buchwald-Hartwig</td><td>ArX + R₂NH</td><td>ArNR₂</td><td>Pd/ligand</td><td>—</td></tr>
+                <tr><td>Ullmann Coupling</td><td>2 ArI</td><td>Ar–Ar</td><td>Cu, Δ</td><td>—</td></tr>
+                <tr><td>Glaser Coupling</td><td>2 RC≡CH</td><td>RC≡C–C≡CR</td><td>Cu(I)/O₂</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-carbonyl-rxn">
+        <div class="accordion-header" onclick="toggleAcc('acc-carbonyl-rxn')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Carbonyl Chemistry — Condensation Reactions</div>
+          <div class="accordion-meta">Knoevenagel · Perkin · Reformatsky · Mannich · Henry</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <div class="three-col">
+              <div class="reaction-card">
+                <div class="reaction-name">Knoevenagel Condensation</div>
+                <div class="reaction-desc">Aldehyde + active methylene compound (malonic acid, malononitrile) + amine catalyst → α,β-unsaturated product. Milder version of Aldol. Widely used in dye synthesis.</div>
+                <div class="reaction-eq">RCHO + CH₂(CN)₂ →(amine)→ RCH=C(CN)₂</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Perkin Reaction</div>
+                <div class="reaction-desc">Aromatic aldehyde + acetic anhydride + sodium acetate (base) → α,β-unsaturated carboxylic acid (cinnamic acid type). Mechanism involves acetate enolate addition to ArCHO.</div>
+                <div class="reaction-eq">ArCHO + (CH₃CO)₂O →(NaOAc, Δ)→ ArCH=CHCOOH</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Reformatsky Reaction</div>
+                <div class="reaction-desc">α-Halo ester + Zn (like Grignard but gentler) → organozinc enolate → adds to aldehyde/ketone → β-hydroxy ester after hydrolysis. Mild; doesn't react with esters.</div>
+                <div class="reaction-eq">RCOCl + BrCH₂CO₂Et + Zn → β-hydroxy ester</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Mannich Reaction</div>
+                <div class="reaction-desc">Three-component reaction: active methylene compound + formaldehyde + amine → β-amino carbonyl (Mannich base). Mechanism: iminium ion formation → electrophilic attack by enol/enolate.</div>
+                <div class="reaction-eq">RCOCH₃ + HCHO + R₂NH → RCOCH₂CH₂NR₂</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Henry (Nitroaldol) Reaction</div>
+                <div class="reaction-desc">Nitroalkane (base-activated α-carbon) + aldehyde → β-nitroalcohol. The nitro group can be reduced to amine (Nef reaction) or eliminated to nitroalkene.</div>
+                <div class="reaction-eq">RCHO + CH₃NO₂ →(base)→ RCH(OH)CH₂NO₂</div>
+              </div>
+              <div class="reaction-card">
+                <div class="reaction-name">Claisen Condensation</div>
+                <div class="reaction-desc">Two esters + NaOEt → β-ketoester. Requires at least one ester with α-H. Mixed Claisen: ester + ester (no α-H) → selective condensation. Intramolecular: Dieckmann cyclization.</div>
+                <div class="reaction-eq">2 CH₃CO₂Et →(NaOEt)→ CH₃COCH₂CO₂Et (ethyl acetoacetate)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-more">
+        <div class="accordion-header" onclick="toggleAcc('acc-more')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">More Important Named Reactions (A–Z)</div>
+          <div class="accordion-meta">Gabriel · Schmidt · Fries · Bischler-Napieralski · and more</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <table class="chem-table">
+              <thead><tr><th>Reaction</th><th>Substrate</th><th>Product</th><th>Key Conditions</th></tr></thead>
+              <tbody>
+                <tr><td>Gabriel Synthesis</td><td>Phthalimide + RX</td><td>Primary amine</td><td>KOH then H₂NNH₂ (hydrazinolysis)</td></tr>
+                <tr><td>Balz-Schiemann</td><td>Diazonium fluoroborate</td><td>Aryl fluoride</td><td>Thermal decomposition</td></tr>
+                <tr><td>Fries Rearrangement</td><td>Aryl ester</td><td>ortho/para hydroxyaryl ketone</td><td>Lewis acid (AlCl₃) or UV (photo-Fries)</td></tr>
+                <tr><td>Schmidt Reaction</td><td>Ketone/carboxylic acid + HN₃</td><td>Amide or amine + CO₂</td><td>H₂SO₄; nitrene-like intermediate</td></tr>
+                <tr><td>Meerwein Arylation</td><td>Diazonium + alkene</td><td>β-aryl haloalkene</td><td>Cu catalyst, radical mechanism</td></tr>
+                <tr><td>Stork Enamine</td><td>Cyclic ketone + amine → enamine</td><td>α-alkylated ketone</td><td>Michael addition or alkylation</td></tr>
+                <tr><td>Robinson Annulation</td><td>Ketone + MVK</td><td>Cyclohexenone</td><td>Michael + intramolecular Aldol</td></tr>
+                <tr><td>Wacker Oxidation</td><td>Terminal alkene + O₂</td><td>Methyl ketone</td><td>PdCl₂/CuCl₂/H₂O</td></tr>
+                <tr><td>Sharpless Epoxidation</td><td>Allylic alcohol + Ti(OiPr)₄/ROOH</td><td>Chiral epoxy alcohol</td><td>(+) or (–) DET; enantioselective</td></tr>
+                <tr><td>Sharpless Aminohydroxylation</td><td>Alkene + N-source + OsO₄</td><td>β-amino alcohol</td><td>K₂OsO₄/(DHQD)₂PHAL</td></tr>
+                <tr><td>Mitsunobu Reaction</td><td>Alcohol + acidic pronucleophile</td><td>Inverted product</td><td>DIAD/PPh₃; inversion of config.</td></tr>
+                <tr><td>Appel Reaction</td><td>Alcohol + CBr₄/PPh₃</td><td>Alkyl bromide</td><td>Inversion of config.</td></tr>
+                <tr><td>Corey-Fuchs</td><td>Aldehyde → gem-dibromide → alkyne</td><td>Terminal alkyne</td><td>CBr₄/PPh₃ then n-BuLi</td></tr>
+                <tr><td>Corey-Kim</td><td>Alcohol + NCS/DMS</td><td>Aldehyde or ketone</td><td>Mild oxidation</td></tr>
+                <tr><td>Julia Olefination</td><td>Sulfone + aldehyde</td><td>Trans-alkene</td><td>E-selective; modified Julia uses BT-sulfone</td></tr>
+                <tr><td>Peterson Olefination</td><td>α-silyl carbanion + carbonyl</td><td>Alkene</td><td>Base → Z; acid → E</td></tr>
+                <tr><td>Horner-Wadsworth-Emmons</td><td>Phosphonate ester + aldehyde</td><td>E-α,β-unsaturated ester</td><td>Stabilized ylide; E-selective</td></tr>
+                <tr><td>Barton Reaction</td><td>Nitrite ester + hν</td><td>δ-Nitrosol</td><td>Free radical; 1,5-HAT</td></tr>
+                <tr><td>Nef Reaction</td><td>Nitroalkane + base/acid</td><td>Aldehyde/ketone</td><td>Mechanism still debated</td></tr>
+                <tr><td>Bamford-Stevens</td><td>Tosylhydrazone + base</td><td>Alkene</td><td>Via diazo intermediate → carbene</td></tr>
+                <tr><td>Corey-Chaykovsky</td><td>Carbonyl + dimethylsulfonium methylide</td><td>Epoxide (from S-ylide)</td><td>Or cyclopropane from sulfonium ylide</td></tr>
+                <tr><td>Eschenmoser Fragmentation</td><td>α,β-epoxy ketone + hydrazine</td><td>Acetylenic ketone</td><td>Ring contraction/fragmentation</td></tr>
+                <tr><td>Paal-Knorr Synthesis</td><td>1,4-dicarbonyl + NH₃ or H₂S</td><td>Pyrrole or thiophene</td><td>Acid-catalysed cyclisation</td></tr>
+                <tr><td>Hantzsch Pyridine Synthesis</td><td>2 β-ketoesters + aldehyde + NH₃</td><td>1,4-Dihydropyridine → pyridine</td><td>Oxidation with HNO₃</td></tr>
+                <tr><td>Biginelli Reaction</td><td>Aldehyde + urea + β-ketoester</td><td>Dihydropyrimidinone</td><td>HCl/Δ; multicomponent</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <p>OrganoChem — <span>The Complete Organic Chemistry by Subrat Biswas</span></p>
+  <p style="margin-top:0.5rem"><span>Subrat Biswas is a Research Scientist in the API Research and Development division at Sun Pharmaceutical Industries Ltd., with over four years of experience in synthetic organic chemistry and process development. His work focuses on API synthesis, impurity profiling, and scale-up of chemical processes, with a strong emphasis on regulatory compliance and efficient drug development.</p>
+</footer>
+<script src="../assets/js/main.js?v=2"></script>
+</body>
+</html>
+

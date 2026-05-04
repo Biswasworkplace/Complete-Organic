@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Part 04 - Oxidation and Reduction</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-multi-page="true" id="top">
+<div class="progress-bar" id="progress"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="overlay-backdrop" id="backdrop" onclick="closeDetail()"></div>
+<div class="detail-overlay" id="detailPanel">
+  <div onclick="closeDetail()" class="detail-close">âœ•</div>
+  <div id="detailContent"></div>
+</div>
+<nav>
+  <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit">OrganoChem</a></div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Index</a></li>
+    <li><a href="../pdf-notes.html">PDF Notes</a></li>
+    <li class="parts-menu">
+      <button class="parts-button" type="button">Parts</button>
+      <div class="parts-dropdown">
+        <a href="../parts/part-01-goc.html"><span>01</span>General Organic Chemistry</a>
+        <a href="../parts/part-02-stereochemistry.html"><span>02</span>Stereochemistry</a>
+        <a href="../parts/part-03-functional-groups.html"><span>03</span>Functional Group Chemistry</a>
+        <a href="../parts/part-04-redox.html"><span>04</span>Oxidation & Reduction</a>
+        <a href="../parts/part-05-rearrangements.html"><span>05</span>Rearrangement Reactions</a>
+        <a href="../parts/part-06-couplings.html"><span>06</span>Coupling Reactions</a>
+        <a href="../parts/part-07-named-reactions.html"><span>07</span>Named Reactions</a>
+        <a href="../parts/part-08-analytical.html"><span>08</span>Analytical & Practical Organic</a>
+        <a href="../parts/part-09-pharma-industrial.html"><span>09</span>Industrial & Pharma Organic Chemistry</a>
+        <a href="../parts/part-10-advanced.html"><span>10</span>Advanced Concepts</a>
+        <a href="../interview.html"><span>IV</span>Interview Preparation</a>
+        <a href="../structure-editor.html"><span>SE</span>Online Structure Editor</a>
+      </div>
+    </li>
+    <li><a href="../interview.html">Interview</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Toggle dark / light mode"></button>
+    <div class="nav-indicator"></div>
+  </div>
+</nav>
+<aside class="floating-toc" aria-label="Chapter navigation">
+  <a href="../parts/part-01-goc.html" title="GOC">01</a>
+  <a href="../parts/part-02-stereochemistry.html" title="Stereochemistry">02</a>
+  <a href="../parts/part-03-functional-groups.html" title="Functional Groups">03</a>
+  <a href="../parts/part-04-redox.html" title="Oxidation & Reduction">04</a>
+  <a href="../parts/part-05-rearrangements.html" title="Rearrangements">05</a>
+  <a href="../parts/part-06-couplings.html" title="Couplings">06</a>
+  <a href="../parts/part-07-named-reactions.html" title="Named Reactions">07</a>
+  <a href="../parts/part-08-analytical.html" title="Analytical">08</a>
+  <a href="../parts/part-09-pharma-industrial.html" title="Pharma">09</a>
+  <a href="../parts/part-10-advanced.html" title="Advanced">10</a>
+  <a href="../interview.html" title="Interview Prep">IV</a>
+</aside>
+<a class="top-button" href="#top" title="Back to top">â†‘</a>
+<main>
+<section id="redox-agents" class="atlas-page active">
+  <div class="chapter-divider">
+    <div class="chapter-num">04</div>
+    <div class="chapter-info">
+      <div class="chapter-label">Chapter Seven</div>
+      <div class="chapter-title">Oxidising & Reducing Agents</div>
+    </div>
+    <div class="chapter-line"></div>
+  </div>
+
+  <div class="content-area">
+    <div class="section-badge">Functional Group Conversion Wise</div>
+    <h2 class="glow-header">Reagent Choice for Synthesis Planning</h2>
+    <p class="glow-sub">A practical redox map for pharma R&D, route scouting, impurity control, and interview-style retrosynthesis: functional group, reagent, product, conditions, and selectivity in one place.</p>
+    <div class="page-actions"><a class="page-pill" href="../index.html">Back to Master Index</a><a class="page-pill" href="../parts/part-05-rearrangements.html">Next: Rearrangements</a></div>
+    <div class="syllabus-list">
+      <div class="syllabus-item"><strong>24. Oxidation Reactions</strong><span>Alcohol oxidation, alkene dihydroxylation/cleavage, aromatic oxidation, and sulfur oxidation.</span></div>
+      <div class="syllabus-item"><strong>25. Oxidising Agents</strong><span>KMnO4, PCC, Jones reagent, O3, DMP, Swern, OsO4, mCPBA and reagent strength selection.</span></div>
+      <div class="syllabus-item"><strong>26. Reduction Reactions</strong><span>Carbonyl reduction, nitro reduction, alkene hydrogenation, nitrile/amide reduction and C=O to CH2.</span></div>
+      <div class="syllabus-item"><strong>27. Reducing Agents</strong><span>LiAlH4, NaBH4, H2/Pd, Clemmensen, Wolff-Kishner, DIBAL-H and selectivity logic.</span></div>
+    </div>
+
+    <div class="two-col">
+      <div class="reaction-card">
+        <div class="reaction-name">Oxidation Logic</div>
+        <div class="reaction-desc">Oxidation usually increases C-O, C-N, C-X bonds or decreases C-H bonds. Mild oxidants stop at aldehydes/ketones; strong oxidants push further to acids or cleavage products.</div>
+        <div class="reaction-tags">
+          <span class="reaction-tag tag-cond">PCC / Swern / DMP</span>
+          <span class="reaction-tag tag-mech">KMnO4 / Jones / O3</span>
+        </div>
+      </div>
+      <div class="reaction-card">
+        <div class="reaction-name">Reduction Logic</div>
+        <div class="reaction-desc">Reduction usually increases C-H bonds or decreases C-O, C-N, C-X bond order. NaBH4 is carbonyl-selective; LiAlH4 and catalytic hydrogenation are much stronger.</div>
+        <div class="reaction-tags">
+          <span class="reaction-tag tag-cond">NaBH4 mild</span>
+          <span class="reaction-tag tag-mech">LiAlH4 strong</span>
+          <span class="reaction-tag tag-type">H2/Pd</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub">Part 1: Oxidising Agents</h3>
+    <div class="accordion">
+      <div class="accordion-item open" id="acc-redox-oxidation">
+        <div class="accordion-header" onclick="toggleAcc('acc-redox-oxidation')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Oxidising Agents by Functional Group</div>
+          <div class="accordion-meta">Alcohols, aldehydes, alkenes, sulfides, side chains</div>
+        </div>
+        <div class="accordion-body open">
+          <div class="accordion-content">
+            <table class="chem-table">
+              <thead><tr><th>Functional Group</th><th>Conversion</th><th>Agents</th><th>Conditions / Key Note</th></tr></thead>
+              <tbody>
+                <tr><td>Primary alcohol</td><td>RCH2OH -> RCHO</td><td>PCC, Swern oxidation, Dess-Martin periodinane</td><td>Mild, anhydrous or controlled conditions; avoids overoxidation.</td></tr>
+                <tr><td>Primary alcohol</td><td>RCH2OH -> RCOOH</td><td>KMnO4, Jones reagent</td><td>Strong oxidation; aqueous/acidic conditions push to acid.</td></tr>
+                <tr><td>Secondary alcohol</td><td>R2CHOH -> R2C=O</td><td>PCC, Jones reagent, KMnO4</td><td>Clean ketone formation; no further oxidation without C-C cleavage.</td></tr>
+                <tr><td>Aldehyde</td><td>RCHO -> RCOOH</td><td>Tollens reagent, Fehling solution, KMnO4</td><td>Very easy oxidation; useful qualitative tests for aldehydes.</td></tr>
+                <tr><td>Alkene</td><td>C=C -> vicinal diol</td><td>OsO4, cold dilute KMnO4</td><td>Syn dihydroxylation; cold KMnO4 is Baeyer's test.</td></tr>
+                <tr><td>Alkene</td><td>C=C -> carbonyl cleavage</td><td>Ozonolysis</td><td>O3/Zn or O3/DMS gives aldehydes/ketones; oxidative workup can give acids.</td></tr>
+                <tr><td>Alkyl benzene</td><td>Ar-CH3 / Ar-alkyl -> Ar-COOH</td><td>Hot concentrated KMnO4</td><td>Needs at least one benzylic hydrogen; important for pharma impurity oxidation.</td></tr>
+                <tr><td>Ketone</td><td>Ketone -> smaller acids</td><td>Strong KMnO4</td><td>Harsh oxidative cleavage; not a mild synthetic choice.</td></tr>
+                <tr><td>Sulfide</td><td>R-S-R -> sulfoxide -> sulfone</td><td>H2O2, mCPBA</td><td>Stoichiometry controls sulfoxide versus sulfone when optimized.</td></tr>
+                <tr><td>Ketone</td><td>Ketone -> ester / lactone</td><td>Baeyer-Villiger oxidation, mCPBA, peracids</td><td>Oxygen insertion; migratory aptitude controls regioselectivity.</td></tr>
+              </tbody>
+            </table>
+
+            <div class="three-col">
+              <div class="info-box"><strong>Mild oxidants:</strong> PCC, Swern, and DMP are preferred when a primary alcohol must stop at the aldehyde stage.</div>
+              <div class="warn-box"><strong>Strong oxidants:</strong> KMnO4, Jones reagent, and O3 can overoxidize or cleave carbon skeletons.</div>
+              <div class="info-box"><strong>Pharma note:</strong> Benzylic oxidation and sulfide-to-sulfoxide/sulfone pathways are common impurity and metabolite alerts.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub">Part 2: Reducing Agents</h3>
+    <div class="accordion">
+      <div class="accordion-item open" id="acc-redox-reduction">
+        <div class="accordion-header" onclick="toggleAcc('acc-redox-reduction')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Reducing Agents by Functional Group</div>
+          <div class="accordion-meta">Carbonyls, acids, nitro, nitrile, amide, arene</div>
+        </div>
+        <div class="accordion-body open">
+          <div class="accordion-content">
+            <table class="chem-table">
+              <thead><tr><th>Functional Group</th><th>Conversion</th><th>Agents</th><th>Conditions / Key Note</th></tr></thead>
+              <tbody>
+                <tr><td>Aldehyde</td><td>RCHO -> RCH2OH</td><td>NaBH4, LiAlH4</td><td>NaBH4 is mild and usually enough.</td></tr>
+                <tr><td>Ketone</td><td>R2C=O -> R2CHOH</td><td>NaBH4, LiAlH4</td><td>Forms secondary alcohol; stereocenter may form as racemate.</td></tr>
+                <tr><td>Carboxylic acid / ester</td><td>RCOOH / RCOOR -> alcohol</td><td>LiAlH4</td><td>Strong hydride; requires dry ether/THF and careful workup.</td></tr>
+                <tr><td>Acid chloride</td><td>RCOCl -> RCHO</td><td>Rosenmund reduction</td><td>H2, poisoned Pd/BaSO4; stops at aldehyde.</td></tr>
+                <tr><td>Alkene</td><td>C=C -> alkane</td><td>Catalytic hydrogenation</td><td>H2/Pd, Pt, or Ni; syn addition on metal surface.</td></tr>
+                <tr><td>Nitro compound</td><td>Ar/alkyl-NO2 -> amine</td><td>Sn/HCl, Fe/HCl, H2/Pd</td><td>Classic route to anilines and amines.</td></tr>
+                <tr><td>Nitrile</td><td>RCN -> RCH2NH2</td><td>LiAlH4, H2/Ni</td><td>Gives primary amine with one extra carbon retained.</td></tr>
+                <tr><td>Amide</td><td>RCONH2 / RCONR2 -> amine</td><td>LiAlH4</td><td>Reduces C=O to CH2 while retaining nitrogen substituents.</td></tr>
+                <tr><td>Carbonyl</td><td>C=O -> CH2</td><td>Clemmensen, Wolff-Kishner</td><td>Clemmensen is acidic; Wolff-Kishner is basic/high heat.</td></tr>
+                <tr><td>Aromatic ring</td><td>Arene -> 1,4-cyclohexadiene</td><td>Birch reduction</td><td>Na/NH3(l), alcohol; substituents control regiochemistry.</td></tr>
+              </tbody>
+            </table>
+
+            <div class="three-col">
+              <div class="info-box"><strong>Mild reducer:</strong> NaBH4 reduces aldehydes and ketones but usually leaves esters, acids, and amides alone.</div>
+              <div class="warn-box"><strong>Strong reducer:</strong> LiAlH4 reduces acids, esters, amides, nitriles, aldehydes, and ketones; water-sensitive and vigorous.</div>
+              <div class="info-box"><strong>Interview pick:</strong> For C=O -> CH2 choose Clemmensen if the substrate tolerates acid, Wolff-Kishner if it tolerates base and heat.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub">Super Important Summary</h3>
+    <div class="two-col">
+      <div>
+        <div class="reaction-card">
+          <div class="reaction-name">Strong Oxidising Agents</div>
+          <div class="reaction-desc">KMnO4, Jones reagent, and O3. Use when full oxidation, oxidative cleavage, or benzylic side-chain oxidation is desired.</div>
+        </div>
+        <div class="reaction-card">
+          <div class="reaction-name">Mild Oxidising Agents</div>
+          <div class="reaction-desc">PCC, Swern oxidation, and Dess-Martin periodinane. Best for alcohol to aldehyde/ketone conversions without overoxidation.</div>
+        </div>
+      </div>
+      <div>
+        <div class="reaction-card">
+          <div class="reaction-name">Strong Reducing Agents</div>
+          <div class="reaction-desc">LiAlH4 and H2/Pd. Use for difficult reductions such as esters, acids, amides, nitriles, nitro compounds, and catalytic hydrogenation.</div>
+        </div>
+        <div class="reaction-card">
+          <div class="reaction-name">Mild Reducing Agent</div>
+          <div class="reaction-desc">NaBH4. Selective for aldehydes and ketones, convenient in protic solvents, and usually compatible with many other functional groups.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <p>OrganoChem — <span>The Complete Organic Chemistry by Subrat Biswas</span></p>
+  <p style="margin-top:0.5rem"><span>Subrat Biswas is a Research Scientist in the API Research and Development division at Sun Pharmaceutical Industries Ltd., with over four years of experience in synthetic organic chemistry and process development. His work focuses on API synthesis, impurity profiling, and scale-up of chemical processes, with a strong emphasis on regulatory compliance and efficient drug development.</p>
+</footer>
+<script src="../assets/js/main.js?v=2"></script>
+</body>
+</html>
+

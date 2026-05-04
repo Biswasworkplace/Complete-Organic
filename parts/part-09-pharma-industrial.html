@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Part 09 - Industrial and Pharma Organic Chemistry</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-multi-page="true" id="top">
+<div class="progress-bar" id="progress"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="overlay-backdrop" id="backdrop" onclick="closeDetail()"></div>
+<div class="detail-overlay" id="detailPanel">
+  <div onclick="closeDetail()" class="detail-close">âœ•</div>
+  <div id="detailContent"></div>
+</div>
+<nav>
+  <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit">OrganoChem</a></div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Index</a></li>
+    <li><a href="../pdf-notes.html">PDF Notes</a></li>
+    <li class="parts-menu">
+      <button class="parts-button" type="button">Parts</button>
+      <div class="parts-dropdown">
+        <a href="../parts/part-01-goc.html"><span>01</span>General Organic Chemistry</a>
+        <a href="../parts/part-02-stereochemistry.html"><span>02</span>Stereochemistry</a>
+        <a href="../parts/part-03-functional-groups.html"><span>03</span>Functional Group Chemistry</a>
+        <a href="../parts/part-04-redox.html"><span>04</span>Oxidation & Reduction</a>
+        <a href="../parts/part-05-rearrangements.html"><span>05</span>Rearrangement Reactions</a>
+        <a href="../parts/part-06-couplings.html"><span>06</span>Coupling Reactions</a>
+        <a href="../parts/part-07-named-reactions.html"><span>07</span>Named Reactions</a>
+        <a href="../parts/part-08-analytical.html"><span>08</span>Analytical & Practical Organic</a>
+        <a href="../parts/part-09-pharma-industrial.html"><span>09</span>Industrial & Pharma Organic Chemistry</a>
+        <a href="../parts/part-10-advanced.html"><span>10</span>Advanced Concepts</a>
+        <a href="../interview.html"><span>IV</span>Interview Preparation</a>
+        <a href="../structure-editor.html"><span>SE</span>Online Structure Editor</a>
+      </div>
+    </li>
+    <li><a href="../interview.html">Interview</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Toggle dark / light mode"></button>
+    <div class="nav-indicator"></div>
+  </div>
+</nav>
+<aside class="floating-toc" aria-label="Chapter navigation">
+  <a href="../parts/part-01-goc.html" title="GOC">01</a>
+  <a href="../parts/part-02-stereochemistry.html" title="Stereochemistry">02</a>
+  <a href="../parts/part-03-functional-groups.html" title="Functional Groups">03</a>
+  <a href="../parts/part-04-redox.html" title="Oxidation & Reduction">04</a>
+  <a href="../parts/part-05-rearrangements.html" title="Rearrangements">05</a>
+  <a href="../parts/part-06-couplings.html" title="Couplings">06</a>
+  <a href="../parts/part-07-named-reactions.html" title="Named Reactions">07</a>
+  <a href="../parts/part-08-analytical.html" title="Analytical">08</a>
+  <a href="../parts/part-09-pharma-industrial.html" title="Pharma">09</a>
+  <a href="../parts/part-10-advanced.html" title="Advanced">10</a>
+  <a href="../interview.html" title="Interview Prep">IV</a>
+</aside>
+<a class="top-button" href="#top" title="Back to top">â†‘</a>
+<main>
+<section id="pharma-industrial" class="atlas-page active">
+  <div class="chapter-divider">
+    <div class="chapter-num">09</div>
+    <div class="chapter-info"><div class="chapter-label">Part Nine</div><div class="chapter-title">Industrial & Pharma Organic Chemistry</div></div>
+    <div class="chapter-line"></div>
+  </div>
+  <div class="content-area">
+    <div class="section-badge">Process Chemistry</div>
+    <h2 class="glow-header">From Flask to Plant</h2>
+    <p class="glow-sub">Pharma chemistry is not only product formation; it is impurity control, safety, robustness, cost, solvent choice, and scalable quality.</p>
+    <div class="page-actions"><a class="page-pill" href="../index.html">Back to Master Index</a><a class="page-pill" href="../parts/part-10-advanced.html">Next: Advanced</a></div>
+    <div class="syllabus-list">
+      <div class="syllabus-item"><strong>43. Impurity Profiling</strong><span>Process impurities, degradation impurities, carryover, purge logic, and specification setting.</span></div>
+      <div class="syllabus-item"><strong>44. GTI & Nitrosamine Risk</strong><span>Genotoxic impurities, nitrosating agents, secondary/tertiary amines, risk assessment.</span></div>
+      <div class="syllabus-item"><strong>45. Reaction Optimization</strong><span>Solvent, temperature, stoichiometry, catalyst loading, DoE, selectivity, yield, impurity reduction.</span></div>
+      <div class="syllabus-item"><strong>46. Scale-up Chemistry</strong><span>Heat transfer, mixing, addition rate, crystallization, filtration, safety and reproducibility.</span></div>
+      <div class="syllabus-item"><strong>47. Green Chemistry</strong><span>Atom economy, safer solvents, catalytic methods, waste reduction, energy efficiency.</span></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <p>OrganoChem — <span>The Complete Organic Chemistry by Subrat Biswas</span></p>
+  <p style="margin-top:0.5rem"><span>Subrat Biswas is a Research Scientist in the API Research and Development division at Sun Pharmaceutical Industries Ltd., with over four years of experience in synthetic organic chemistry and process development. His work focuses on API synthesis, impurity profiling, and scale-up of chemical processes, with a strong emphasis on regulatory compliance and efficient drug development.</p>
+</footer>
+<script src="../assets/js/main.js?v=2"></script>
+</body>
+</html>
+

@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Part 01 - General Organic Chemistry</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-multi-page="true" id="top">
+<div class="progress-bar" id="progress"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="overlay-backdrop" id="backdrop" onclick="closeDetail()"></div>
+<div class="detail-overlay" id="detailPanel">
+  <div onclick="closeDetail()" class="detail-close">âœ•</div>
+  <div id="detailContent"></div>
+</div>
+<nav>
+  <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit">OrganoChem</a></div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Index</a></li>
+    <li><a href="../pdf-notes.html">PDF Notes</a></li>
+    <li class="parts-menu">
+      <button class="parts-button" type="button">Parts</button>
+      <div class="parts-dropdown">
+        <a href="../parts/part-01-goc.html"><span>01</span>General Organic Chemistry</a>
+        <a href="../parts/part-02-stereochemistry.html"><span>02</span>Stereochemistry</a>
+        <a href="../parts/part-03-functional-groups.html"><span>03</span>Functional Group Chemistry</a>
+        <a href="../parts/part-04-redox.html"><span>04</span>Oxidation & Reduction</a>
+        <a href="../parts/part-05-rearrangements.html"><span>05</span>Rearrangement Reactions</a>
+        <a href="../parts/part-06-couplings.html"><span>06</span>Coupling Reactions</a>
+        <a href="../parts/part-07-named-reactions.html"><span>07</span>Named Reactions</a>
+        <a href="../parts/part-08-analytical.html"><span>08</span>Analytical & Practical Organic</a>
+        <a href="../parts/part-09-pharma-industrial.html"><span>09</span>Industrial & Pharma Organic Chemistry</a>
+        <a href="../parts/part-10-advanced.html"><span>10</span>Advanced Concepts</a>
+        <a href="../interview.html"><span>IV</span>Interview Preparation</a>
+        <a href="../structure-editor.html"><span>SE</span>Online Structure Editor</a>
+      </div>
+    </li>
+    <li><a href="../interview.html">Interview</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Toggle dark / light mode"></button>
+    <div class="nav-indicator"></div>
+  </div>
+</nav>
+<aside class="floating-toc" aria-label="Chapter navigation">
+  <a href="../parts/part-01-goc.html" title="GOC">01</a>
+  <a href="../parts/part-02-stereochemistry.html" title="Stereochemistry">02</a>
+  <a href="../parts/part-03-functional-groups.html" title="Functional Groups">03</a>
+  <a href="../parts/part-04-redox.html" title="Oxidation & Reduction">04</a>
+  <a href="../parts/part-05-rearrangements.html" title="Rearrangements">05</a>
+  <a href="../parts/part-06-couplings.html" title="Couplings">06</a>
+  <a href="../parts/part-07-named-reactions.html" title="Named Reactions">07</a>
+  <a href="../parts/part-08-analytical.html" title="Analytical">08</a>
+  <a href="../parts/part-09-pharma-industrial.html" title="Pharma">09</a>
+  <a href="../parts/part-10-advanced.html" title="Advanced">10</a>
+  <a href="../interview.html" title="Interview Prep">IV</a>
+</aside>
+<a class="top-button" href="#top" title="Back to top">â†‘</a>
+<main>
+<section id="goc" class="atlas-page active">
+  <div class="chapter-divider">
+    <div class="chapter-num">01</div>
+    <div class="chapter-info">
+      <div class="chapter-label">Chapter One</div>
+      <div class="chapter-title">General Organic Chemistry (GOC)</div>
+    </div>
+    <div class="chapter-line"></div>
+  </div>
+  <div class="content-area">
+    <div class="section-badge">Core Concepts</div>
+    <h2 class="glow-header">The Science of Carbon</h2>
+    <p class="glow-sub">Organic chemistry is the study of carbon-containing compounds — their structure, properties, reactions, and synthesis. Carbon's unique ability to form four covalent bonds and chain together makes life itself possible.</p>
+    <div class="page-actions"><a class="page-pill" href="../index.html">Back to Master Index</a><a class="page-pill" href="../parts/part-02-stereochemistry.html">Next: Stereochemistry</a></div>
+
+    <h3 class="sub">GOC Master Checklist</h3>
+    <div class="syllabus-list">
+      <div class="syllabus-item"><strong>1. Basic Concepts</strong><ul class="checklist-bullets"><li>Nature of organic compounds</li><li>Classification</li><li>Hybridization</li><li>Geometry</li><li>Sigma and pi bonding</li></ul></div>
+      <div class="syllabus-item"><strong>2. Electronic Effects</strong><ul class="checklist-bullets"><li>Inductive effect (+I, -I)</li><li>Mesomeric effect (+M, -M)</li><li>Resonance</li><li>Hyperconjugation</li><li>Electromeric effect</li></ul></div>
+      <div class="syllabus-item"><strong>3. Acid-Base Chemistry</strong><ul class="checklist-bullets"><li>Bronsted-Lowry theory</li><li>Lewis theory</li><li>pKa and strength</li><li>Factors affecting acidity</li><li>Factors affecting basicity</li></ul></div>
+      <div class="syllabus-item"><strong>4. Reaction Intermediates</strong><ul class="checklist-bullets"><li>Short-lived reactive species</li><li>Control mechanism pathway</li><li>Decide rearrangement tendency</li><li>Influence product formation</li></ul><ul class="subtopic-list"><li data-intermediate="carbocation">Carbocation</li><li data-intermediate="carbanion">Carbanion</li><li data-intermediate="free-radical">Free Radical</li><li data-intermediate="carbene">Carbene</li><li data-intermediate="nitrene">Nitrene</li></ul></div>
+      <div class="syllabus-item"><strong>5. Mechanism Fundamentals</strong><ul class="checklist-bullets"><li>Arrow pushing</li><li>Transition state</li><li>Kinetic control</li><li>Thermodynamic control</li><li>Hammond postulate</li></ul></div>
+      <div class="syllabus-item"><strong>6. Reaction Types</strong><ul class="checklist-bullets"><li>Substitution (SN1, SN2)</li><li>Elimination (E1, E2, E1cb)</li><li>Addition reactions</li><li>Rearrangement reactions</li></ul></div>
+      <div class="syllabus-item"><strong>7. Stability Concepts</strong><ul class="checklist-bullets"><li>Stability of intermediates</li><li>Stability of alkenes</li><li>Conjugation</li><li>Resonance stabilization</li></ul></div>
+      <div class="syllabus-item"><strong>8. Aromaticity</strong><ul class="checklist-bullets"><li>Aromaticity concept</li><li>Huckel's rule</li><li>Aromatic systems</li><li>Antiaromatic systems</li><li>Non-aromatic systems</li></ul></div>
+      <div class="syllabus-item"><strong>9. Solvent Effects</strong><ul class="checklist-bullets"><li>Polar vs non-polar solvents</li><li>Protic vs aprotic solvents</li><li>Solvent effect on SN1/SN2</li><li>Solvent effect on E1/E2</li><li>Mechanism selection</li></ul></div>
+      <div class="syllabus-item"><strong>10. Intermolecular Forces</strong><ul class="checklist-bullets"><li>Dipole-dipole forces</li><li>Hydrogen bonding</li><li>London dispersion</li><li>Boiling point trends</li><li>Solubility and physical properties</li></ul></div>
+    </div>
+
+    <div class="topics-grid">
+      <div class="topic-card" onclick="showDetail('bonding')">
+        <div class="topic-icon">SIG</div>
+        <div class="topic-title">Chemical Bonding</div>
+        <div class="topic-desc">Covalent bonds, ionic bonds, sigma & pi bonds, hybridization (sp, sp², sp³), bond angles, bond lengths, and bond energies.</div>
+        <span class="topic-tag">Foundation</span>
+      </div>
+      <div class="topic-card" onclick="showDetail('isomerism')">
+        <div class="topic-icon">ISO</div>
+        <div class="topic-title">Isomerism</div>
+        <div class="topic-desc">Structural isomers, stereoisomers, enantiomers, diastereomers, conformational isomers, geometric isomers, and optical activity.</div>
+        <span class="topic-tag">Structure</span>
+      </div>
+      <div class="topic-card" onclick="showDetail('nomenclature')">
+        <div class="topic-icon">IUPAC</div>
+        <div class="topic-title">IUPAC Nomenclature</div>
+        <div class="topic-desc">Systematic naming of alkanes, alkenes, alkynes, cyclic compounds, functional groups, and complex multi-functional molecules.</div>
+        <span class="topic-tag">Naming</span>
+      </div>
+      <div class="topic-card" onclick="showDetail('inductive')">
+        <div class="topic-icon">I/M</div>
+        <div class="topic-title">Electronic Effects</div>
+        <div class="topic-desc">Inductive effect (+I, −I), mesomeric/resonance effect (+M, −M), hyperconjugation, steric effects, and field effects.</div>
+        <span class="topic-tag">Electronics</span>
+      </div>
+      <div class="topic-card" onclick="showDetail('acidity')">
+        <div class="topic-icon">pKa</div>
+        <div class="topic-title">Acidity & Basicity</div>
+        <div class="topic-desc">Brønsted-Lowry theory, Lewis acid-base concept, pKa values, factors affecting acidity, and hard-soft acid-base theory.</div>
+        <span class="topic-tag">Thermodynamics</span>
+      </div>
+      <div class="topic-card" onclick="showDetail('stereochem')">
+        <div class="topic-icon">R/S</div>
+        <div class="topic-title">Stereochemistry</div>
+        <div class="topic-desc">R/S configuration, E/Z nomenclature, chiral centers, optical rotation, racemic mixtures, resolution, and asymmetric synthesis.</div>
+        <span class="topic-tag">3D Structure</span>
+      </div>
+    </div>
+
+    <!-- Hybridization Table -->
+    <h3 class="sub">Hybridization Summary</h3>
+    <table class="chem-table">
+      <thead><tr><th>Hybridization</th><th>Geometry</th><th>Bond Angle</th><th>Orbitals</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>sp³</td><td>Tetrahedral</td><td>109.5°</td><td>4 σ bonds</td><td>CH₄, ethane, alcohols</td></tr>
+        <tr><td>sp²</td><td>Trigonal Planar</td><td>120°</td><td>3 σ + 1 π</td><td>Ethene, benzene, carbocations</td></tr>
+        <tr><td>sp</td><td>Linear</td><td>180°</td><td>2 σ + 2 π</td><td>Ethyne, nitriles, alkynes</td></tr>
+        <tr><td>sp³d</td><td>Trigonal Bipyramidal</td><td>90°/120°</td><td>5 bonds</td><td>PCl₅</td></tr>
+        <tr><td>sp³d²</td><td>Octahedral</td><td>90°</td><td>6 bonds</td><td>SF₆</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Reaction intermediates -->
+    <h3 class="sub">Reactive Intermediates</h3>
+    <div class="three-col">
+      <div class="reaction-card">
+        <div class="reaction-name">Carbocations (Carbenium Ions)</div>
+        <div class="reaction-desc">Carbon bearing a positive charge with 6 electrons. Stability: 3° > 2° > 1° > methyl. Allylic and benzylic carbocations are stabilized by resonance.</div>
+        <div class="reaction-tags">
+          <span class="reaction-tag tag-mech">Electrophile</span>
+          <span class="reaction-tag tag-type">sp² hybrid</span>
+        </div>
+      </div>
+      <div class="reaction-card">
+        <div class="reaction-name">Carbanions</div>
+        <div class="reaction-desc">Carbon bearing a negative charge with 8 electrons. Stability: methyl > 1° > 2° > 3°. Stabilized by electron-withdrawing groups.</div>
+        <div class="reaction-tags">
+          <span class="reaction-tag tag-mech">Nucleophile</span>
+          <span class="reaction-tag tag-type">sp³ hybrid</span>
+        </div>
+      </div>
+      <div class="reaction-card">
+        <div class="reaction-name">Free Radicals</div>
+        <div class="reaction-desc">Carbon with one unpaired electron. Stability: 3° > 2° > 1° > methyl. Involved in chain reactions (initiation, propagation, termination).</div>
+        <div class="reaction-tags">
+          <span class="reaction-tag tag-mech">Neutral species</span>
+          <span class="reaction-tag tag-cond">UV/heat initiated</span>
+        </div>
+      </div>
+      <div class="reaction-card">
+        <div class="reaction-name">Carbenes</div>
+        <div class="reaction-desc">Neutral carbon with two non-bonding electrons. Singlet carbenes (paired) and triplet carbenes (unpaired). React via insertion and cycloaddition.</div>
+        <div class="reaction-tags">
+          <span class="reaction-tag tag-mech">Divalent carbon</span>
+          <span class="reaction-tag tag-type">Reactive</span>
+        </div>
+      </div>
+      <div class="reaction-card">
+        <div class="reaction-name">Nitrenes</div>
+        <div class="reaction-desc">Nitrogen analog of carbenes. Monovalent nitrogen with 6 electrons. Generated from azides; insert into C–H bonds.</div>
+        <div class="reaction-tags">
+          <span class="reaction-tag tag-mech">Nitrogen species</span>
+          <span class="reaction-tag tag-cond">Thermolysis</span>
+        </div>
+      </div>
+      <div class="reaction-card">
+        <div class="reaction-name">Arynes (Benzyne)</div>
+        <div class="reaction-desc">Highly strained triple bond in aromatic ring. Generated from aryl halides + strong base. Reacts as powerful electrophile/dienophile.</div>
+        <div class="reaction-tags">
+          <span class="reaction-tag tag-mech">Electrophile</span>
+          <span class="reaction-tag tag-type">Aromatic</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="mechanisms" class="atlas-page active">
+  <div class="chapter-divider">
+    <div class="chapter-num">05</div>
+    <div class="chapter-info">
+      <div class="chapter-label">Chapter Five</div>
+      <div class="chapter-title">Reaction Mechanisms & Kinetics</div>
+    </div>
+    <div class="chapter-line"></div>
+  </div>
+  <div class="content-area">
+    <div class="section-badge">Mechanistic Pathways</div>
+    <h2 class="glow-header">Understanding How Reactions Proceed</h2>
+    <p class="glow-sub">Mechanisms describe the step-by-step electron flow in reactions. Arrow pushing — curved arrows showing electron movement — is the language of mechanistic organic chemistry.</p>
+
+    <div class="two-col">
+      <div>
+        <h3 class="sub">Nucleophiles vs Electrophiles</h3>
+        <div class="reaction-card">
+          <div class="reaction-name">Nucleophiles (Electron Donors)</div>
+          <div class="reaction-desc">Attack electron-deficient centers. Characterized by availability of electron pairs (lone pairs) or high electron density. Strong nucleophiles: I⁻, RS⁻, CN⁻, R₂N⁻, RLi, RMgX. Weak: H₂O, ROH, RCOOH.</div>
+          <div class="reaction-tags">
+            <span class="reaction-tag tag-type">Lone pair donors</span>
+            <span class="reaction-tag tag-mech">Negative/neutral</span>
+          </div>
+        </div>
+        <div class="reaction-card">
+          <div class="reaction-name">Electrophiles (Electron Acceptors)</div>
+          <div class="reaction-desc">Attack electron-rich centers. Characterized by electron deficiency (positive charge, δ+, empty orbital). Strong: carbocations, protonated carbonyls. Common: halogens, Lewis acids, alkyl halides, carbonyl compounds.</div>
+          <div class="reaction-tags">
+            <span class="reaction-tag tag-type">Electron acceptors</span>
+            <span class="reaction-tag tag-mech">Positive/δ+</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="sub">Energy Diagrams</h3>
+        <div class="reaction-card">
+          <div class="reaction-name">SN2 — Single Energy Barrier</div>
+          <div class="reaction-desc">One transition state (no intermediate). Rate = k[Nu][RX]. Reaction profile: reactants → single high TS → products. No intermediate to isolate. Concerted bond breaking + bond forming.</div>
+        </div>
+        <div class="reaction-card">
+          <div class="reaction-name">SN1/E1 — Two Energy Barriers</div>
+          <div class="reaction-desc">Two transition states with a carbocation intermediate (local energy minimum). Rate = k[RX] only. First TS (ionization) = rate-determining step. Intermediate can rearrange or undergo elimination.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub">Pericyclic Reactions</h3>
+    <div class="info-box"><strong>Woodward-Hoffmann Rules:</strong> Thermal [4n+2] pericyclic reactions are thermally allowed; [4n] are photochemically allowed. All pericyclic reactions proceed via cyclic TS with simultaneous bond forming/breaking.</div>
+    <div class="three-col">
+      <div class="reaction-card">
+        <div class="reaction-name">Electrocyclic Reactions</div>
+        <div class="reaction-desc">Opening or closing of conjugated polyenes to cyclic compounds. 4n electrons: thermal ring opening = conrotatory; 4n+2: thermal = disrotatory. Example: butadiene ⇌ cyclobutene; hexatriene ⇌ cyclohexadiene.</div>
+      </div>
+      <div class="reaction-card">
+        <div class="reaction-name">Cycloadditions</div>
+        <div class="reaction-desc">[4+2] Diels-Alder (thermally allowed), [2+2] photochemically allowed, 1,3-dipolar cycloadditions ([3+2]: Huisgen azide-alkyne "click chemistry"). Form cyclic products from two π-systems.</div>
+      </div>
+      <div class="reaction-card">
+        <div class="reaction-name">Sigmatropic Rearrangements</div>
+        <div class="reaction-desc">[1,j] and [i,j] shifts. [1,5]-H shift: thermal; [1,3]-H shift: photochemical. [3,3] (Cope, Claisen) thermally allowed. [2,3] (Wittig, Sommelet-Hauser) allowed. All concerted, cyclic TS.</div>
+      </div>
+    </div>
+
+    <h3 class="sub">Aromatic Electrophilic Substitution (EAS) — Mechanism Detail</h3>
+    <div class="accordion">
+      <div class="accordion-item" id="acc-eas">
+        <div class="accordion-header" onclick="toggleAcc('acc-eas')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">EAS Mechanism — Arenium Ion (Wheland Intermediate)</div>
+          <div class="accordion-meta">σ-complex · rate-determining step</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <div class="mechanism-step"><div class="step-num">1</div><div class="step-text"><strong>Generation of electrophile:</strong> Lewis acid activates electrophilic species. E.g., Br₂ + FeBr₃ → Br⁺–FeBr₄⁻ (electrophilic bromine)</div></div>
+            <div class="mechanism-step"><div class="step-num">2</div><div class="step-text"><strong>Rate-determining electrophilic attack (σ-complex):</strong> Electrophile attacks aromatic ring → non-aromatic arenium ion (Wheland/σ-complex) formed. π system disrupted at that carbon (sp³).</div></div>
+            <div class="mechanism-step"><div class="step-num">3</div><div class="step-text"><strong>Deprotonation → restoration of aromaticity:</strong> Base (or conjugate base of Lewis acid complex) removes H⁺ from sp³ carbon → aromaticity restored. Overall: substitution (not addition) of H by E.</div></div>
+            <div class="info-box"><strong>Why not addition?</strong> Loss of aromaticity (resonance energy ≈ 36 kcal/mol) makes addition products unstable. Deprotonation to restore aromaticity is strongly favored thermodynamically.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <p>OrganoChem — <span>The Complete Organic Chemistry by Subrat Biswas</span></p>
+  <p style="margin-top:0.5rem"><span>Subrat Biswas is a Research Scientist in the API Research and Development division at Sun Pharmaceutical Industries Ltd., with over four years of experience in synthetic organic chemistry and process development. His work focuses on API synthesis, impurity profiling, and scale-up of chemical processes, with a strong emphasis on regulatory compliance and efficient drug development.</p>
+</footer>
+<script src="../assets/js/main.js?v=2"></script>
+</body>
+</html>
+

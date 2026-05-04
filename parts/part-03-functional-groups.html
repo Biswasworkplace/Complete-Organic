@@ -1,0 +1,462 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Part 03 - Functional Group Chemistry</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-multi-page="true" id="top">
+<div class="progress-bar" id="progress"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="overlay-backdrop" id="backdrop" onclick="closeDetail()"></div>
+<div class="detail-overlay" id="detailPanel">
+  <div onclick="closeDetail()" class="detail-close">âœ•</div>
+  <div id="detailContent"></div>
+</div>
+<nav>
+  <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit">OrganoChem</a></div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Index</a></li>
+    <li><a href="../pdf-notes.html">PDF Notes</a></li>
+    <li class="parts-menu">
+      <button class="parts-button" type="button">Parts</button>
+      <div class="parts-dropdown">
+        <a href="../parts/part-01-goc.html"><span>01</span>General Organic Chemistry</a>
+        <a href="../parts/part-02-stereochemistry.html"><span>02</span>Stereochemistry</a>
+        <a href="../parts/part-03-functional-groups.html"><span>03</span>Functional Group Chemistry</a>
+        <a href="../parts/part-04-redox.html"><span>04</span>Oxidation & Reduction</a>
+        <a href="../parts/part-05-rearrangements.html"><span>05</span>Rearrangement Reactions</a>
+        <a href="../parts/part-06-couplings.html"><span>06</span>Coupling Reactions</a>
+        <a href="../parts/part-07-named-reactions.html"><span>07</span>Named Reactions</a>
+        <a href="../parts/part-08-analytical.html"><span>08</span>Analytical & Practical Organic</a>
+        <a href="../parts/part-09-pharma-industrial.html"><span>09</span>Industrial & Pharma Organic Chemistry</a>
+        <a href="../parts/part-10-advanced.html"><span>10</span>Advanced Concepts</a>
+        <a href="../interview.html"><span>IV</span>Interview Preparation</a>
+        <a href="../structure-editor.html"><span>SE</span>Online Structure Editor</a>
+      </div>
+    </li>
+    <li><a href="../interview.html">Interview</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Toggle dark / light mode"></button>
+    <div class="nav-indicator"></div>
+  </div>
+</nav>
+<aside class="floating-toc" aria-label="Chapter navigation">
+  <a href="../parts/part-01-goc.html" title="GOC">01</a>
+  <a href="../parts/part-02-stereochemistry.html" title="Stereochemistry">02</a>
+  <a href="../parts/part-03-functional-groups.html" title="Functional Groups">03</a>
+  <a href="../parts/part-04-redox.html" title="Oxidation & Reduction">04</a>
+  <a href="../parts/part-05-rearrangements.html" title="Rearrangements">05</a>
+  <a href="../parts/part-06-couplings.html" title="Couplings">06</a>
+  <a href="../parts/part-07-named-reactions.html" title="Named Reactions">07</a>
+  <a href="../parts/part-08-analytical.html" title="Analytical">08</a>
+  <a href="../parts/part-09-pharma-industrial.html" title="Pharma">09</a>
+  <a href="../parts/part-10-advanced.html" title="Advanced">10</a>
+  <a href="../interview.html" title="Interview Prep">IV</a>
+</aside>
+<a class="top-button" href="#top" title="Back to top">â†‘</a>
+<main>
+<section id="functional-groups" class="atlas-page active">
+  <div class="chapter-divider">
+    <div class="chapter-num">03</div>
+    <div class="chapter-info">
+      <div class="chapter-label">Chapter Two</div>
+      <div class="chapter-title">Functional Groups & Compound Classes</div>
+    </div>
+    <div class="chapter-line"></div>
+  </div>
+  <div class="content-area">
+    <div class="section-badge">Functional Groups</div>
+    <h2 class="glow-header">The Language of Reactivity</h2>
+    <p class="glow-sub">Functional groups are specific atomic groupings that impart characteristic chemical behavior. Mastering them is mastering organic chemistry.</p>
+    <div class="page-actions"><a class="page-pill" href="../index.html">Back to Master Index</a><a class="page-pill" href="../parts/part-03-functional-groups.html#alcohols">Deep Dive: Alcohols</a><a class="page-pill" href="../parts/part-04-redox.html">Next: Ox/Red</a></div>
+    <div class="syllabus-list">
+      <div class="syllabus-item"><strong>17. Hydrocarbons</strong><span>Alkanes, alkenes, alkynes, aromatic hydrocarbons, addition and substitution logic.</span></div>
+      <div class="syllabus-item"><strong>18. Alkyl Halides</strong><span>SN1/SN2, E1/E2, leaving-group ability, solvent and nucleophile effects.</span></div>
+      <div class="syllabus-item"><strong>19. Alcohols & Phenols</strong><span>Preparation, acidity, oxidation, dehydration, substitution, protection.</span></div>
+      <div class="syllabus-item"><strong>20. Aldehydes & Ketones</strong><span>Nucleophilic addition, imines, acetals, aldol, oxidation/reduction.</span></div>
+      <div class="syllabus-item"><strong>21. Carboxylic Acids</strong><span>Acidity, acid derivatives, esterification, amidation, reduction.</span></div>
+      <div class="syllabus-item"><strong>22. Amines & Amides</strong><span>Basicity, acylation, diazonium chemistry, amide stability and reduction.</span></div>
+      <div class="syllabus-item"><strong>23. Heterocycles</strong><span>Nitrogen, oxygen, sulfur heterocycles; pharma scaffolds and aromaticity.</span></div>
+    </div>
+
+    <div class="fg-grid">
+      <div class="fg-card" onclick="showDetail('alkane')"><div class="fg-formula">C–H</div><div class="fg-name">Alkane</div></div>
+      <div class="fg-card" onclick="showDetail('alkene')"><div class="fg-formula">C=C</div><div class="fg-name">Alkene</div></div>
+      <div class="fg-card" onclick="showDetail('alkyne')"><div class="fg-formula">C≡C</div><div class="fg-name">Alkyne</div></div>
+      <div class="fg-card" onclick="showDetail('arene')"><div class="fg-formula">Ar</div><div class="fg-name">Arene</div></div>
+      <div class="fg-card" onclick="showDetail('alcohol_fg')"><div class="fg-formula">–OH</div><div class="fg-name">Alcohol</div></div>
+      <div class="fg-card" onclick="showDetail('ether_fg')"><div class="fg-formula">–O–</div><div class="fg-name">Ether</div></div>
+      <div class="fg-card" onclick="showDetail('aldehyde')"><div class="fg-formula">–CHO</div><div class="fg-name">Aldehyde</div></div>
+      <div class="fg-card" onclick="showDetail('ketone_fg')"><div class="fg-formula">C=O</div><div class="fg-name">Ketone</div></div>
+      <div class="fg-card" onclick="showDetail('carboxyl')"><div class="fg-formula">–COOH</div><div class="fg-name">Carboxylic Acid</div></div>
+      <div class="fg-card" onclick="showDetail('ester')"><div class="fg-formula">–COO–</div><div class="fg-name">Ester</div></div>
+      <div class="fg-card" onclick="showDetail('amide_fg')"><div class="fg-formula">–CONH₂</div><div class="fg-name">Amide</div></div>
+      <div class="fg-card" onclick="showDetail('amine_fg')"><div class="fg-formula">–NH₂</div><div class="fg-name">Amine</div></div>
+      <div class="fg-card" onclick="showDetail('halide')"><div class="fg-formula">–X</div><div class="fg-name">Alkyl Halide</div></div>
+      <div class="fg-card" onclick="showDetail('nitrile')"><div class="fg-formula">–C≡N</div><div class="fg-name">Nitrile</div></div>
+      <div class="fg-card" onclick="showDetail('thiol')"><div class="fg-formula">–SH</div><div class="fg-name">Thiol</div></div>
+      <div class="fg-card" onclick="showDetail('sulfide')"><div class="fg-formula">–S–</div><div class="fg-name">Sulfide</div></div>
+      <div class="fg-card" onclick="showDetail('epoxide')"><div class="fg-formula">△O</div><div class="fg-name">Epoxide</div></div>
+      <div class="fg-card" onclick="showDetail('anhydride')"><div class="fg-formula">–CO–O–CO–</div><div class="fg-name">Anhydride</div></div>
+    </div>
+
+    <!-- Hydrocarbons accordion -->
+    <h3 class="sub">Hydrocarbons</h3>
+    <div class="accordion">
+      <div class="accordion-item" id="acc-alkanes">
+        <div class="accordion-header" onclick="toggleAcc('acc-alkanes')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Alkanes — Saturated Hydrocarbons (CₙH₂ₙ₊₂)</div>
+          <div class="accordion-meta">sp³ · σ bonds only</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p style="font-size:0.78rem;color:var(--text2);line-height:1.8;margin-bottom:1rem">Alkanes contain only C–H and C–C single bonds. They are the least reactive class of organic compounds. Their reactions are primarily <strong>free radical halogenation</strong> and <strong>combustion</strong>.</p>
+            <table class="chem-table">
+              <thead><tr><th>Alkane</th><th>Formula</th><th>BP (°C)</th><th>State</th></tr></thead>
+              <tbody>
+                <tr><td>Methane</td><td>CH₄</td><td>–161.5</td><td>Gas</td></tr>
+                <tr><td>Ethane</td><td>C₂H₆</td><td>–88.6</td><td>Gas</td></tr>
+                <tr><td>Propane</td><td>C₃H₈</td><td>–42.1</td><td>Gas</td></tr>
+                <tr><td>Butane</td><td>C₄H₁₀</td><td>–0.5</td><td>Gas</td></tr>
+                <tr><td>Pentane</td><td>C₅H₁₂</td><td>36.1</td><td>Liquid</td></tr>
+                <tr><td>Hexane</td><td>C₆H₁₄</td><td>68.7</td><td>Liquid</td></tr>
+                <tr><td>Octane</td><td>C₈H₁₈</td><td>125.7</td><td>Liquid</td></tr>
+                <tr><td>Hexadecane</td><td>C₁₆H₃₄</td><td>287</td><td>Liquid</td></tr>
+              </tbody>
+            </table>
+            <div class="info-box"><strong>Key Reactions:</strong> Free Radical Halogenation (Cl₂/hν), Combustion (O₂/Δ), Pyrolysis (Δ), Isomerization (AlCl₃), Dehydrogenation (Cr₂O₃/Δ)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-alkenes">
+        <div class="accordion-header" onclick="toggleAcc('acc-alkenes')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Alkenes — Unsaturated Hydrocarbons (CₙH₂ₙ)</div>
+          <div class="accordion-meta">sp² · Contains C=C π bond</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p style="font-size:0.78rem;color:var(--text2);line-height:1.8;margin-bottom:1rem">The C=C double bond makes alkenes much more reactive than alkanes. The π electrons are targets for electrophilic addition reactions. Markovnikov's rule governs regioselectivity.</p>
+            <div class="info-box"><strong>Electrophilic Addition:</strong> HX (Markovnikov), H₂O (acid-catalysed), Br₂ (anti addition), H₂ (syn addition/catalytic hydrogenation), HOX (halohydrin formation)</div>
+            <div class="info-box"><strong>Oxidation Reactions:</strong> Epoxidation (mCPBA), Dihydroxylation (OsO₄), Ozonolysis (O₃), Wacker Oxidation (PdCl₂)</div>
+            <div class="reaction-eq">CH₂=CH₂ + HBr → CH₃–CH₂Br (Markovnikov addition)</div>
+            <div class="reaction-eq">CH₂=CH₂ + Br₂ (CCl₄) → BrCH₂–CH₂Br (anti addition)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-alkynes">
+        <div class="accordion-header" onclick="toggleAcc('acc-alkynes')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Alkynes — Triple Bond Hydrocarbons (CₙH₂ₙ₋₂)</div>
+          <div class="accordion-meta">sp · Contains C≡C</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p style="font-size:0.78rem;color:var(--text2);line-height:1.8;margin-bottom:1rem">Terminal alkynes (RC≡CH) have weakly acidic terminal H (pKa ≈ 25) and form acetylide anions with strong bases. React via electrophilic addition (twice) or nucleophilic addition.</p>
+            <div class="info-box"><strong>Key Reactions:</strong> Hydration (H₂SO₄/HgSO₄ → ketone via Markovnikov), Hydrohalogenation (2× HX), Halogenation (2× X₂), Lindlar hydrogenation (→ cis alkene), Na/NH₃ reduction (→ trans alkene), Alkylation of terminal alkynes</div>
+            <div class="reaction-eq">RC≡CH + NaNH₂ → RC≡C⁻Na⁺ + NH₃ (acetylide formation)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="acc-arenes">
+        <div class="accordion-header" onclick="toggleAcc('acc-arenes')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Aromatic Compounds — Benzene & Derivatives</div>
+          <div class="accordion-meta">Hückel: (4n+2) π electrons</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p style="font-size:0.78rem;color:var(--text2);line-height:1.8;margin-bottom:1rem">Aromaticity requires: planar molecule, cyclic conjugation, (4n+2) π electrons (Hückel's rule). Benzene undergoes Electrophilic Aromatic Substitution (EAS) rather than addition to preserve aromaticity.</p>
+            <div class="info-box"><strong>EAS Reactions:</strong> Halogenation (X₂/FeX₃), Nitration (HNO₃/H₂SO₄), Sulfonation (SO₃/H₂SO₄), Friedel-Crafts Alkylation (RX/AlCl₃), Friedel-Crafts Acylation (RCOCl/AlCl₃)</div>
+            <div class="info-box"><strong>Activating Groups (ortho/para directors):</strong> –OH, –OR, –NH₂, –NHR, –NR₂, –NHCOR, –R, –Ar</div>
+            <div class="warn-box"><strong>Deactivating Groups (meta directors):</strong> –NO₂, –CN, –COOH, –SO₃H, –CHO, –COR, –CCl₃</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="alcohols" class="atlas-page active">
+  <div class="chapter-divider">
+    <div class="chapter-num">04</div>
+    <div class="chapter-info">
+      <div class="chapter-label">Chapter Four</div>
+      <div class="chapter-title">Synthesis of Alcohols — Complete Classification</div>
+    </div>
+    <div class="chapter-line"></div>
+  </div>
+  <div class="content-area">
+    <div class="section-badge">Functional Group Preparation</div>
+    <h2 class="glow-header">Alcohols by Class</h2>
+    <p class="glow-sub">Alcohols are classified by the number of carbon substituents on the carbon bearing the –OH group. Each class has distinct preparation methods and reactivity patterns.</p>
+
+    <!-- PRIMARY ALCOHOLS -->
+    <div class="alcohol-branch">
+      <div class="branch-label">Primary 1°</div>
+      <div class="branch-content">
+        <div class="branch-title">
+          Primary Alcohols (1°)
+          <span class="branch-badge badge-1">RCH₂OH</span>
+        </div>
+        <p style="font-size:0.78rem;color:var(--text2);line-height:1.7;margin-bottom:1rem">Carbon bearing –OH has ONE alkyl/aryl substituent (or none for methanol). Primary alcohols are good nucleophiles, oxidize to aldehydes (mild oxidant) or carboxylic acids (strong oxidant).</p>
+        <div class="info-box"><strong>Boiling Points:</strong> Higher than alkanes due to H-bonding. Methanol (65°C), Ethanol (78°C), 1-Propanol (97°C), 1-Butanol (118°C).</div>
+
+        <h3 class="sub">Name Reactions that Prepare Primary Alcohols</h3>
+        <div class="reactions-list">
+          <div class="mini-reaction" onclick="showDetail('grignard_primary')">
+            <div class="mini-name">Grignard + Formaldehyde</div>
+            <div class="mini-desc">RMgX + HCHO → RCH₂OH (1°) after H₃O⁺. Formaldehyde is the ONLY aldehyde giving primary alcohol from Grignard.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('hc_hydroboration')">
+            <div class="mini-name">Hydroboration-Oxidation</div>
+            <div class="mini-desc">BH₃·THF adds anti-Markovnikov to terminal alkene → boronate → H₂O₂/NaOH → primary alcohol. Syn addition, anti-Markovnikov.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('lah_ester')">
+            <div class="mini-name">LiAlH₄ Reduction of Esters/Carboxylic Acids</div>
+            <div class="mini-desc">RCOOH or RCO₂R' + LiAlH₄ (ether, then H₃O⁺) → RCH₂OH. Most direct method for primary alcohols from carbonyls.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('bouveault')">
+            <div class="mini-name">Bouveault-Blanc Reduction</div>
+            <div class="mini-desc">Ester + Na (metal) + EtOH → primary alcohol. Historical method before LiAlH₄. Dissolving metal SET mechanism.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('dibal_aldehyde')">
+            <div class="mini-name">DIBAL-H Reduction of Aldehyde</div>
+            <div class="mini-desc">RCHO + DIBAL-H (–78°C, then H₃O⁺) → RCH₂OH. Mild, selective reduction of aldehyde without touching other functional groups.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('swern_rev')">
+            <div class="mini-name">NaBH₄ Reduction of Aldehyde</div>
+            <div class="mini-desc">RCHO + NaBH₄ (MeOH or EtOH) → RCH₂OH. Mild selective reduction. Doesn't reduce esters, carboxylic acids, or amides.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('wacker_prim')">
+            <div class="mini-name">Oxymercuration-Demercuration (anti-Markovnikov variant)</div>
+            <div class="mini-desc">Terminal alkene + Hg(OAc)₂/H₂O then NaBH₄ → Markovnikov alcohol. For anti-Markovnikov → use hydroboration-oxidation instead.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('fermentation')">
+            <div class="mini-name">Fermentation</div>
+            <div class="mini-desc">Glucose (C₆H₁₂O₆) →(yeast/zymase)→ 2 EtOH + 2 CO₂. Industrial production of ethanol (primary alcohol). Zymase enzyme complex catalyses.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('kolbe_prim')">
+            <div class="mini-name">Reduction of Acyl Chloride (Rosenmund)</div>
+            <div class="mini-desc">RCOCl + H₂ →(Pd-BaSO₄/quinoline)→ RCHO; then NaBH₄ → RCH₂OH. Rosenmund stops at aldehyde; further reduction gives 1° alcohol.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('sn2_oh')">
+            <div class="mini-name">SN2 on Methyl/Primary Alkyl Halide (NaOH)</div>
+            <div class="mini-desc">CH₃X or RCH₂X + NaOH(aq) → CH₃OH or RCH₂OH. Classic SN2 hydrolysis with inversion. Works best for methyl and primary substrates.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('epoxide_open_prim')">
+            <div class="mini-name">Epoxide Ring Opening (at less hindered C)</div>
+            <div class="mini-desc">Terminal epoxide + LiAlH₄ (or H₂O, base) → primary alcohol at less hindered carbon. Regioselective anti addition.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('oppenauer_rev')">
+            <div class="mini-name">Meerwein-Ponndorf-Verley Reduction</div>
+            <div class="mini-desc">Aldehyde + isopropanol →(Al(OiPr)₃)→ primary alcohol. Transfer hydrogenation; chemoselective, won't reduce C=C.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECONDARY ALCOHOLS -->
+    <div class="alcohol-branch">
+      <div class="branch-label" style="border-left-color:var(--accent4);color:var(--accent4)">Secondary 2°</div>
+      <div class="branch-content">
+        <div class="branch-title">
+          Secondary Alcohols (2°)
+          <span class="branch-badge badge-2">R₂CHOH</span>
+        </div>
+        <p style="font-size:0.78rem;color:var(--text2);line-height:1.7;margin-bottom:1rem">Carbon bearing –OH has TWO alkyl/aryl substituents. Secondary alcohols oxidize to ketones (not further). They are more reactive toward dehydration and rearrangement than primary alcohols.</p>
+        <div class="warn-box"><strong>Oxidation:</strong> 2° alcohols → ketones with PCC, PDC, Jones, Swern, DMP, or even KMnO₄ (no over-oxidation past ketone under normal conditions).</div>
+
+        <h3 class="sub">Name Reactions that Prepare Secondary Alcohols</h3>
+        <div class="reactions-list">
+          <div class="mini-reaction" onclick="showDetail('grignard_ald')">
+            <div class="mini-name">Grignard + Aldehyde (not HCHO)</div>
+            <div class="mini-desc">RMgX + R'CHO → R–CH(OH)–R' (2°) after H₃O⁺. Any aldehyde other than formaldehyde gives a secondary alcohol.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('nabh4_ketone')">
+            <div class="mini-name">NaBH₄ or LiAlH₄ Reduction of Ketone</div>
+            <div class="mini-desc">R₂C=O + NaBH₄ → R₂CHOH (2°). NaBH₄ in protic solvent; LiAlH₄ in ether. Hydride delivery to carbonyl carbon.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('markov_add')">
+            <div class="mini-name">Markovnikov Hydration of Alkene</div>
+            <div class="mini-desc">R–CH=CH₂ + H₂O →(H⁺)→ R–CH(OH)–CH₃ (2° Markovnikov). Carbocation mechanism; gives Markovnikov product (more substituted OH).</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('oxymercuration')">
+            <div class="mini-name">Oxymercuration-Demercuration</div>
+            <div class="mini-desc">Alkene + Hg(OAc)₂/H₂O → organomercury → NaBH₄ → Markovnikov alcohol. No rearrangements; anti addition (Markovnikov).</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('dihydroxylation')">
+            <div class="mini-name">OsO₄ Dihydroxylation (gives diol)</div>
+            <div class="mini-desc">Alkene + OsO₄ (cat.) + NMO → syn-diol (two secondary or one primary + one secondary OH). Both OHs added to same face.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('wacker')">
+            <div class="mini-name">Wacker Oxidation</div>
+            <div class="mini-desc">Internal alkene + O₂ →(PdCl₂/CuCl₂)→ secondary ketone, which can be reduced to secondary alcohol. (Primary: terminal alkene → methyl ketone).</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('mwv')">
+            <div class="mini-name">Meerwein-Ponndorf-Verley (Ketone → 2° Alcohol)</div>
+            <div class="mini-desc">Ketone + 2-propanol →(Al(OiPr)₃)→ secondary alcohol. Equilibrium driven by acetone distillation. Oppenauer oxidation is the reverse.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('enzymatic_ketone')">
+            <div class="mini-name">Enzymatic Reduction of Ketones</div>
+            <div class="mini-desc">Ketone + NADPH →(ketoreductase)→ chiral secondary alcohol with high ee. Used in asymmetric synthesis of pharmaceutical intermediates.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('pinacol_coup')">
+            <div class="mini-name">Pinacol Coupling</div>
+            <div class="mini-desc">2 RCHO or 2 R₂C=O →(Mg/TiCl₄ or low-valent metal)→ 1,2-diol (pinacol, vicinal diol with two 2° OH). Reductive coupling via ketyl radical.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('sharples_sec')">
+            <div class="mini-name">Sharpless Asymmetric Dihydroxylation</div>
+            <div class="mini-desc">Alkene + OsO₄/K₃Fe(CN)₆ + (DHQ)₂PHAL or (DHQD)₂PHAL → chiral diol. AD-mix-α or AD-mix-β for face selectivity. Nobel 2001.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('cbz_sec')">
+            <div class="mini-name">CBS Reduction (Corey-Bakshi-Shibata)</div>
+            <div class="mini-desc">Ketone + BH₃ →(CBS oxazaborolidine catalyst)→ chiral secondary alcohol. Enantioselective borane reduction. Widely used in pharma.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERTIARY ALCOHOLS -->
+    <div class="alcohol-branch">
+      <div class="branch-label" style="border-left-color:var(--accent3);color:var(--accent3)">Tertiary 3°</div>
+      <div class="branch-content">
+        <div class="branch-title">
+          Tertiary Alcohols (3°)
+          <span class="branch-badge badge-3">R₃COH</span>
+        </div>
+        <p style="font-size:0.78rem;color:var(--text2);line-height:1.7;margin-bottom:1rem">Carbon bearing –OH has THREE alkyl/aryl substituents. Tertiary alcohols CANNOT be oxidized to carbonyl compounds under normal conditions (no α-H). They are most reactive toward dehydration and SN1 reactions.</p>
+        <div class="info-box"><strong>Lucas Test:</strong> 3° alcohols react immediately with ZnCl₂/HCl (turns cloudy/two layers instantly at room temperature) due to fast SN1 via stable 3° carbocation.</div>
+
+        <h3 class="sub">Name Reactions that Prepare Tertiary Alcohols</h3>
+        <div class="reactions-list">
+          <div class="mini-reaction" onclick="showDetail('grignard_ketone')">
+            <div class="mini-name">Grignard + Ketone</div>
+            <div class="mini-desc">RMgX + R'COR'' → R–C(OH)(R')(R'') (3°) after H₃O⁺. The most general route to tertiary alcohols. Any ketone + any Grignard reagent.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('grignard_ester')">
+            <div class="mini-name">Grignard + Ester (2 equiv.)</div>
+            <div class="mini-desc">RCO₂R' + 2 R''MgX → R–C(OH)(R'')₂ (3°, symmetric) after H₃O⁺. Ester reacts with first Grignard → ketone intermediate → reacts with second equiv. → 3° alcohol.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('organolithium')">
+            <div class="mini-name">Organolithium Reagent + Ketone</div>
+            <div class="mini-desc">RLi + R'COR'' → R–C(OLi)(R')(R'') → 3° alcohol. Organolithiums are more reactive than Grignard; add to even hindered ketones. More basic; less stable.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('tert_rearr')">
+            <div class="mini-name">Grignard + Acyl Chloride (1 equiv.)</div>
+            <div class="mini-desc">RCOCl + R'MgX → ketone intermediate → reacts with second R'MgX → 3° alcohol (if excess Grignard) or ketone (if careful stoichiometry with 1 equiv).</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('pinacol_tert')">
+            <div class="mini-name">Grignard + CO₂ then another Grignard (indirect)</div>
+            <div class="mini-desc">RMgX + CO₂ → RCOOH → RCOCl → +R'MgX → RCOR' → +R'MgX → R–C(OH)R'₂. Extended route to unsymmetric tertiary alcohols.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('cram')">
+            <div class="mini-name">Cram's Rule / Chelation-Controlled Addition</div>
+            <div class="mini-desc">α-Chiral ketone + nucleophile: Cram's rule predicts attack on less hindered face (Felkin-Anh model). Chelation control (Mg, Li) can reverse selectivity → stereoselective 3° alcohol.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('petersen_tert')">
+            <div class="mini-name">Corey-Itsuno (Oxazaborolidine) Reduction — note: gives 2°</div>
+            <div class="mini-desc">Note: Tertiary alcohols CANNOT be made by carbonyl reduction (no C–H present). Routes always involve C–C bond formation at C=O: Grignard, organolithium, or organocerium addition to ketones.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('hydration_tert')">
+            <div class="mini-name">Markovnikov Hydration of Disubstituted/Trisubstituted Alkene</div>
+            <div class="mini-desc">R₂C=CHR' + H₂O →(H⁺)→ R₂C(OH)–CH₂R' (3°). Highly substituted alkene → most substituted carbon gets OH (Markovnikov). Fast via stable 3° carbocation.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('organocerium')">
+            <div class="mini-name">Organocerium Reagent Addition to Ketone</div>
+            <div class="mini-desc">RLi + CeCl₃ → R–CeCl₂ (organocerium). Adds to enolizable ketones with less enolization side reaction than RLi. Gives 3° alcohol with high yield.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('pinacol_tert2')">
+            <div class="mini-name">Barbier-Type Reaction</div>
+            <div class="mini-desc">In situ generation of organometallic (Zn, In, Sm) from alkyl halide + ketone in one pot → 3° alcohol. Indium especially useful (works in water).</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('dialkylzinc')">
+            <div class="mini-name">Reformatsky Reagent with Ketone</div>
+            <div class="mini-desc">α-Bromo ester + Zn + ketone (R₂C=O) → Reformatsky: β-hydroxy ester. If using with tertiary ketones selectively, gives β-hydroxy ester with quaternary carbon.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHENOLS (Special Case) -->
+    <div class="alcohol-branch" style="margin-top:1rem">
+      <div class="branch-label" style="border-left-color:#c084fc;color:#c084fc">Phenols Ar–OH</div>
+      <div class="branch-content">
+        <div class="branch-title">
+          Phenols (ArOH) — Aromatic Alcohols
+          <span class="branch-badge" style="background:rgba(192,132,252,0.1);border:1px solid rgba(192,132,252,0.3);color:#c084fc">ArOH</span>
+        </div>
+        <p style="font-size:0.78rem;color:var(--text2);line-height:1.7;margin-bottom:1rem">Phenols are more acidic (pKa ≈ 10) than aliphatic alcohols (pKa ≈ 16–18) due to resonance stabilization of phenoxide ion. The lone pair on O is delocalized into aromatic ring.</p>
+        <div class="reactions-list">
+          <div class="mini-reaction" onclick="showDetail('dow')">
+            <div class="mini-name">Dow Process (Industrial)</div>
+            <div class="mini-desc">Chlorobenzene + NaOH →(high T/P)→ sodium phenoxide → H⁺ → phenol. Industrial route. SNAr (nucleophilic aromatic substitution) mechanism.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('cumene')">
+            <div class="mini-name">Cumene Hydroperoxide Process</div>
+            <div class="mini-desc">Benzene → cumene (AlCl₃) → cumene hydroperoxide (O₂) → phenol + acetone (H⁺). Main industrial route to phenol. Hock rearrangement.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('sandmeyer_oh')">
+            <div class="mini-name">Diazonium Salt Hydrolysis</div>
+            <div class="mini-desc">ArNH₂ → ArN₂⁺ (NaNO₂/HCl) → ArOH (H₂O/H⁺, boiling). Gives phenol from aniline. Key step: diazonium → SN1 at Ar via phenyl cation or SNAr.</div>
+          </div>
+          <div class="mini-reaction" onclick="showDetail('dakin')">
+            <div class="mini-name">Dakin Reaction</div>
+            <div class="mini-desc">Ortho or para hydroxybenzaldehyde or hydroxyacetophenone + H₂O₂/NaOH → catechol/hydroquinone. Baeyer-Villiger type oxidation in aromatic series.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REACTIONS OF ALCOHOLS -->
+    <h3 class="sub" style="margin-top:3rem">Reactions of Alcohols</h3>
+    <div class="accordion">
+      <div class="accordion-item" id="acc-alc-rxns">
+        <div class="accordion-header" onclick="toggleAcc('acc-alc-rxns')">
+          <div class="accordion-icon">+</div>
+          <div class="accordion-label">Complete Reactions of Alcohols</div>
+          <div class="accordion-meta">Dehydration · Ester formation · Lucas test · Iodoform</div>
+        </div>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <table class="chem-table">
+              <thead><tr><th>Reaction</th><th>Reagent/Conditions</th><th>Product</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Esterification (Fischer)</td><td>R'COOH + H⁺</td><td>Ester + H₂O</td><td>Reversible; remove H₂O to push equilibrium</td></tr>
+                <tr><td>Acylation (Schotten-Baumann)</td><td>R'COCl or (R'CO)₂O</td><td>Ester</td><td>Faster than Fischer; irreversible</td></tr>
+                <tr><td>Dehydration (intramolecular)</td><td>H₂SO₄ (conc.), 170°C</td><td>Alkene (E2/E1)</td><td>Zaitsev alkene; less water → favours alkene</td></tr>
+                <tr><td>Dehydration (intermolecular)</td><td>H₂SO₄ (conc.), 140°C</td><td>Ether</td><td>SN2 pathway; requires more alcohol/lower T</td></tr>
+                <tr><td>Conversion to halide (HX)</td><td>HI, HBr, HCl + ZnCl₂</td><td>Alkyl halide</td><td>Reactivity: HI > HBr > HCl; 3° > 2° > 1°</td></tr>
+                <tr><td>Conversion to halide (SOCl₂)</td><td>SOCl₂ + pyridine</td><td>RCl (inversion)</td><td>Retention with pyridine; inversion in CCl₄</td></tr>
+                <tr><td>Conversion to halide (PBr₃)</td><td>PBr₃</td><td>RBr (inversion)</td><td>SN2; clean inversion</td></tr>
+                <tr><td>Mitsunobu</td><td>DIAD, PPh₃, AcOH</td><td>Inverted ester → hydrolysis → inverted alcohol</td><td>Net inversion; broad scope</td></tr>
+                <tr><td>Oxidation (1°)</td><td>PCC (mild) or Jones</td><td>Aldehyde or acid</td><td>PCC stops at aldehyde; Jones gives acid</td></tr>
+                <tr><td>Oxidation (2°)</td><td>PCC, Jones, Swern, DMP</td><td>Ketone</td><td>Cannot be further oxidized under normal conditions</td></tr>
+                <tr><td>Iodoform Test</td><td>I₂/NaOH</td><td>CHI₃ (yellow ppt) + RCOO⁻</td><td>Only methyl ketones or CH₃CHOH– give CHI₃</td></tr>
+                <tr><td>Lucas Test</td><td>ZnCl₂/conc. HCl</td><td>Alkyl chloride (turbidity)</td><td>3°: immediate; 2°: slow; 1°: no reaction at RT</td></tr>
+                <tr><td>Reaction with Na metal</td><td>Na (metal)</td><td>Sodium alkoxide + H₂</td><td>R–OH + Na → R–O⁻Na⁺ + ½H₂</td></tr>
+                <tr><td>Ring opening (epoxide)</td><td>H⁺ or base</td><td>Trans-diol (anti addition)</td><td>Acid: SN1-like at more substituted C; Base: SN2 at less substituted</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <p>OrganoChem — <span>The Complete Organic Chemistry by Subrat Biswas</span></p>
+  <p style="margin-top:0.5rem"><span>Subrat Biswas is a Research Scientist in the API Research and Development division at Sun Pharmaceutical Industries Ltd., with over four years of experience in synthetic organic chemistry and process development. His work focuses on API synthesis, impurity profiling, and scale-up of chemical processes, with a strong emphasis on regulatory compliance and efficient drug development.</p>
+</footer>
+<script src="../assets/js/main.js?v=2"></script>
+</body>
+</html>
+

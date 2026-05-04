@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Part 05 - Rearrangement Reactions</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-multi-page="true" id="top">
+<div class="progress-bar" id="progress"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="overlay-backdrop" id="backdrop" onclick="closeDetail()"></div>
+<div class="detail-overlay" id="detailPanel">
+  <div onclick="closeDetail()" class="detail-close">âœ•</div>
+  <div id="detailContent"></div>
+</div>
+<nav>
+  <div class="nav-logo"><a href="../index.html" style="text-decoration:none;color:inherit">OrganoChem</a></div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Index</a></li>
+    <li><a href="../pdf-notes.html">PDF Notes</a></li>
+    <li class="parts-menu">
+      <button class="parts-button" type="button">Parts</button>
+      <div class="parts-dropdown">
+        <a href="../parts/part-01-goc.html"><span>01</span>General Organic Chemistry</a>
+        <a href="../parts/part-02-stereochemistry.html"><span>02</span>Stereochemistry</a>
+        <a href="../parts/part-03-functional-groups.html"><span>03</span>Functional Group Chemistry</a>
+        <a href="../parts/part-04-redox.html"><span>04</span>Oxidation & Reduction</a>
+        <a href="../parts/part-05-rearrangements.html"><span>05</span>Rearrangement Reactions</a>
+        <a href="../parts/part-06-couplings.html"><span>06</span>Coupling Reactions</a>
+        <a href="../parts/part-07-named-reactions.html"><span>07</span>Named Reactions</a>
+        <a href="../parts/part-08-analytical.html"><span>08</span>Analytical & Practical Organic</a>
+        <a href="../parts/part-09-pharma-industrial.html"><span>09</span>Industrial & Pharma Organic Chemistry</a>
+        <a href="../parts/part-10-advanced.html"><span>10</span>Advanced Concepts</a>
+        <a href="../interview.html"><span>IV</span>Interview Preparation</a>
+        <a href="../structure-editor.html"><span>SE</span>Online Structure Editor</a>
+      </div>
+    </li>
+    <li><a href="../interview.html">Interview</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Toggle dark / light mode"></button>
+    <div class="nav-indicator"></div>
+  </div>
+</nav>
+<aside class="floating-toc" aria-label="Chapter navigation">
+  <a href="../parts/part-01-goc.html" title="GOC">01</a>
+  <a href="../parts/part-02-stereochemistry.html" title="Stereochemistry">02</a>
+  <a href="../parts/part-03-functional-groups.html" title="Functional Groups">03</a>
+  <a href="../parts/part-04-redox.html" title="Oxidation & Reduction">04</a>
+  <a href="../parts/part-05-rearrangements.html" title="Rearrangements">05</a>
+  <a href="../parts/part-06-couplings.html" title="Couplings">06</a>
+  <a href="../parts/part-07-named-reactions.html" title="Named Reactions">07</a>
+  <a href="../parts/part-08-analytical.html" title="Analytical">08</a>
+  <a href="../parts/part-09-pharma-industrial.html" title="Pharma">09</a>
+  <a href="../parts/part-10-advanced.html" title="Advanced">10</a>
+  <a href="../interview.html" title="Interview Prep">IV</a>
+</aside>
+<a class="top-button" href="#top" title="Back to top">â†‘</a>
+<main>
+<section id="rearrangements" class="atlas-page active">
+  <div class="chapter-divider">
+    <div class="chapter-num">05</div>
+    <div class="chapter-info"><div class="chapter-label">Part Five</div><div class="chapter-title">Rearrangement Reactions</div></div>
+    <div class="chapter-line"></div>
+  </div>
+  <div class="content-area">
+    <div class="section-badge">Very Important</div>
+    <h2 class="glow-header">Migration, Ring Expansion & Skeleton Editing</h2>
+    <p class="glow-sub">Rearrangements are high-yield interview territory because the product depends on migratory aptitude, cation stability, and stereoelectronic alignment.</p>
+    <div class="page-actions"><a class="page-pill" href="../index.html">Back to Master Index</a><a class="page-pill" href="../parts/part-06-couplings.html">Next: Couplings</a></div>
+    <div class="syllabus-list">
+      <div class="syllabus-item"><strong>28. Carbocation Rearrangements</strong><span>Wagner-Meerwein rearrangement; hydride shift, methyl shift, ring expansion, more stable carbocation formation.</span></div>
+      <div class="syllabus-item"><strong>29. Nitrogen Rearrangements</strong><span>Hofmann rearrangement, Curtius rearrangement, Schmidt reaction; migration to electron-deficient nitrogen.</span></div>
+      <div class="syllabus-item"><strong>30. Oxygen Rearrangements</strong><span>Baeyer-Villiger oxidation and Pinacol-Pinacolone rearrangement; oxygen insertion and 1,2-shift logic.</span></div>
+      <div class="syllabus-item"><strong>31. Pericyclic Rearrangements</strong><span>Cope and Claisen rearrangements; concerted [3,3]-sigmatropic reactions.</span></div>
+    </div>
+    <table class="chem-table">
+      <thead><tr><th>Reaction</th><th>Substrate</th><th>Product Logic</th><th>Key Selectivity</th></tr></thead>
+      <tbody>
+        <tr><td>Wagner-Meerwein</td><td>Carbocation precursor</td><td>Rearranged carbocation/product</td><td>More stable cation; hydride/alkyl shift.</td></tr>
+        <tr><td>Hofmann rearrangement</td><td>Primary amide</td><td>Amine with one less carbon</td><td>Migration with loss of carbonyl carbon as CO2.</td></tr>
+        <tr><td>Curtius rearrangement</td><td>Acyl azide</td><td>Isocyanate, then amine/carbamate/urea</td><td>R group migrates to nitrogen.</td></tr>
+        <tr><td>Schmidt reaction</td><td>Acid/ketone + azide</td><td>Amide/amine derivatives</td><td>Migration under strongly acidic azide conditions.</td></tr>
+        <tr><td>Baeyer-Villiger</td><td>Ketone</td><td>Ester or lactone</td><td>Migratory aptitude controls oxygen insertion.</td></tr>
+        <tr><td>Pinacol-Pinacolone</td><td>Vicinal diol</td><td>Carbonyl compound</td><td>Best migrating group shifts after water loss.</td></tr>
+        <tr><td>Cope</td><td>1,5-diene</td><td>Rearranged 1,5-diene</td><td>Chair-like transition state.</td></tr>
+        <tr><td>Claisen</td><td>Allyl vinyl ether</td><td>Unsaturated carbonyl</td><td>[3,3] rearrangement with stereocontrol.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</main>
+<footer>
+  <p>OrganoChem — <span>The Complete Organic Chemistry by Subrat Biswas</span></p>
+  <p style="margin-top:0.5rem"><span>Subrat Biswas is a Research Scientist in the API Research and Development division at Sun Pharmaceutical Industries Ltd., with over four years of experience in synthetic organic chemistry and process development. His work focuses on API synthesis, impurity profiling, and scale-up of chemical processes, with a strong emphasis on regulatory compliance and efficient drug development.</p>
+</footer>
+<script src="../assets/js/main.js?v=2"></script>
+</body>
+</html>
+
